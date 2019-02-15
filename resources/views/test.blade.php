@@ -1,1 +1,1 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboardUser')
