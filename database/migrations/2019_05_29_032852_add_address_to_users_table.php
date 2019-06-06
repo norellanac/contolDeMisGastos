@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,12 +15,18 @@ class AddAddressToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('country_id');
-            $table->integer('state_id');
-            $table->integer('city_id');
+            $table->unsignedInteger('country_id');
+            $table->unsignedInteger('state_id');
+            $table->unsignedInteger('city_id');
             $table->integer('zone');
             $table->string('street');
             $table->string('avenue');
+            /*$table->foreign('country_id')
+                  ->references('id')->on('countries');
+            $table->foreign('state_id')
+                  ->references('id')->on('states');
+            $table->foreign('city_id')
+                  ->references('id')->on('cities');*/
         });
     }
 
@@ -33,6 +39,10 @@ class AddAddressToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            
+            /*$table->dropForeign(['country_id']);
+            $table->dropForeign(['state_id']);
+            $table->dropForeign(['city_id']); */
             $table->dropColumn('country_id');
             $table->dropColumn('state_id');
             $table->dropColumn('city_id');
