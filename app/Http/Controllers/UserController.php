@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\User;
-
+use App\Country;
+use App\City;
 class UserController extends Controller
 {
     /**
@@ -17,11 +18,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
         $users=User::all();
         $roles=Role::all();
         //dd($users);
         return view('users.index', ['users'=>$users, 'roles'=>$roles]);
+        /*
+        $users = User::find(1);
+        dd($users);
+        //$city=Country::find(1);
+        //dd($city->posts ) ;
+
+        return view("users.index",["users"=>$users ]);*/
     }
 
     /**
