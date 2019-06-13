@@ -1,5 +1,6 @@
 <?php
 
+use \Torann\GeoIP\GeoIP;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,5 +24,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/users', 'UserController'); 
-Route::resource('/roles', 'PermissionController')->middleware('role:admin|super');; 
+Route::resource('/roles', 'PermissionController')->middleware('role:admin|super');
 
+Route::get('/ip', function () {
+
+    $ip = Request::ip();
+    //dd( geoip($ip = '35.168.118.22'));
+    echo geoip()->getClientIP() . '<br>';
+    echo $ip . '<br>';
+    //dd( geoip()->getService()) ;
+    dd( geoip()->getLocation($ip));
+    //dd( Request);
+    dd( geoip($ip));
+    //return Request();
+});
