@@ -15,8 +15,8 @@ class AddRolesToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('role_id');
-            $table->string('url_image');
+            $table->integer('role_id')->nullable();
+            $table->string('url_image')->nullable();
         });
     }
 

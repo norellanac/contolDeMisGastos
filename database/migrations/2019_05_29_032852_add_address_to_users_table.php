@@ -15,12 +15,12 @@ class AddAddressToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->unsignedInteger('country_id');
-            $table->unsignedInteger('state_id');
-            $table->unsignedInteger('city_id');
-            $table->integer('zone');
-            $table->string('street');
-            $table->string('avenue');
+            $table->unsignedInteger('country_id')->nullable();
+            $table->unsignedInteger('state_id')->nullable();
+            $table->unsignedInteger('city_id')->nullable();
+            $table->integer('zone')->nullable();
+            $table->string('street')->nullable();
+            $table->string('avenue')->nullable();
             /*$table->foreign('country_id')
                   ->references('id')->on('countries');
             $table->foreign('state_id')
