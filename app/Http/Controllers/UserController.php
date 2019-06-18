@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Permission;
 use App\User;
 use App\Country;
 use App\City;
+use App\State;
 class UserController extends Controller
 {
     /**
@@ -39,6 +40,8 @@ class UserController extends Controller
     public function create()
     {
         //
+        $countries= Country::all();
+        return view('users.createData', ['countries'=>$countries]);
     }
 
     /**
@@ -50,6 +53,17 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        request()->validate([
+            'country_id' => ['required', 'integer'],
+            'state_id' => ['required', 'integer',],
+            'city_id' => ['required', 'integer'],
+            'zone' => ['required', 'integer'] /*
+            'street' => ['required','integer'],
+            'avenue' => ['required', 'integer'],
+            'url_image' => ['required', 'max:1999']*/
+        ]);
+        //dd($request->url_image);
+        dd($request->hasFile('url_image'));
     }
 
     /**
@@ -95,5 +109,19 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function states ($id)
+    {
+        //funcion para filtrar productos por distribuidor
+        $states=State::where('country_id','=',$id)->get();
+        return $states;
+    }
+    public function cities ($id)
+    {
+        //funcion para filtrar productos por distribuidor
+        $states=City::where('state_id','=',$id)->get();
+        return $states;
     }
 }

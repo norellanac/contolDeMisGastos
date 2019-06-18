@@ -5,7 +5,7 @@
     <div class="login-content">
         <div class="login-logo">
             <a href="#">
-                <img src="images/icon/logo.png" alt="CoolAdmin">
+                <img src="{{ asset('images/icon/logo.png')}}" alt="CoolAdmin">
             </a>
         </div>
         <div class="login-form">
@@ -47,21 +47,20 @@
                 </div>
                 <div class="login-checkbox">
                     <label>
-                        <input type="checkbox" name="aggree">Agree the terms and policy
+                        <input type="checkbox" name="aggree">Acepto los términos y condiciones
                     </label>
                 </div>
-                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
-                <div class="social-login-content">
+                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Regístrate</button>
+                {{--<div class="social-login-content">
                     <div class="social-button">
                         <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>
                         <button class="au-btn au-btn--block au-btn--blue2">register with twitter</button>
                     </div>
-                </div>
+                </div>--}}
             </form>
             <div class="register-link">
                 <p>
-                    Already have account?
-                    <a href="#">Sign In</a>
+                    <a href="{{url('login')}}">Iniciar sesión</a>
                 </p>
             </div>
         </div>

@@ -23,7 +23,7 @@ Route::get('/dash', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/users', 'UserController'); 
+Route::resource('/users', 'UserController')->middleware('auth'); 
 Route::resource('/roles', 'PermissionController')->middleware('role:admin|super');
 
 Route::get('/ip', function () {
@@ -38,3 +38,6 @@ Route::get('/ip', function () {
     dd( geoip($ip));
     //return Request();
 });
+
+Route::get('states/{country}', 'UserController@states');
+Route::get('cities/{state}', 'UserController@cities');
