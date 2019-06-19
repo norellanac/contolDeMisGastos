@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Listado de Posts</title>
+</head>
+<body>
+	<ul>
+		
+	</ul>
+
+	<script>
+		(function () {
+
+			'use strict';
+
+			if ( localStorage.getItem('token') ) {
+				fetch('http://localhost:3000/api/posts', {
+					method: 'GET',
+					headers: new Headers({
+							'Accept': 'application/json', //headers necesarios para api de oauth2
+							'Authorization': 'Bearer ' + localStorage.getItem('token') //concatena el token guardado en memoria del navegador
+						})
+				})
+				.then(response => {
+					return response.json()
+				})
+				.then(data => {
+					let li = '';
+					data.forEach( (modelo, index) => {
+						li += '<li>' + modelo.name + '</li>'; // name atributo del modelo
+					})
+					document.querySelector('ul').innerHTML = li;
+				})
+			}
+
+		})();
+	</script>
+</body>
+</html>
