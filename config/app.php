@@ -177,6 +177,8 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         //GeoIP
         \Torann\GeoIP\GeoIPServiceProvider::class,
+        //provider necesario par laravel passport
+        Barryvdh\Cors\ServiceProvider::class,
 
     ],
 

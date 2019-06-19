@@ -24,6 +24,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/users', 'UserController')->middleware('auth'); 
+Route::resource('/apiClients', 'apiClientsController')->middleware('auth'); 
 Route::resource('/roles', 'PermissionController')->middleware('role:admin|super');
 
 Route::get('/ip', function () {
@@ -41,3 +42,4 @@ Route::get('/ip', function () {
 
 Route::get('states/{country}', 'UserController@states');
 Route::get('cities/{state}', 'UserController@cities');
+
