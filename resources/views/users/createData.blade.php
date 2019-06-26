@@ -31,7 +31,7 @@
 
                 <div class="form-group">
                     <label>Departamento</label>
-                    <select type="number" name="state_id" id="departamentos" placeholder="seller_id de stickers" class="form-control{{ $errors->has('state_id') ? ' is-invalid' : '' }}" > 
+                    <select type="number" name="state_id" id="departamentos" placeholder="seller_id de stickers" class="form-control{{ $errors->has('state_id') ? ' is-invalid' : '' }}" autofocus required> 
                         <option value="">Departamentos</option>
                     </select>
                     @if ($errors->has('state_id'))
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label>Municipio</label>
-                    <select type="number" name="city_id" id="cities" placeholder="city_id de stickers" class="form-control{{ $errors->has('city_id') ? ' is-invalid' : '' }}" > 
+                    <select type="number" name="city_id" id="cities" placeholder="city_id de stickers" class="form-control{{ $errors->has('city_id') ? ' is-invalid' : '' }}" autofocus required> 
                         <option value="">Ciudad</option>
                     </select>
                     @if ($errors->has('city_id'))
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group">
                     <label>Zona</label>
-                    <input type="number" name="zone"  min="0" class="au-input au-input--full{{ $errors->has('zone') ? ' is-invalid' : '' }}" value="{{ old('zone') }}" >
+                    <input type="number" name="zone"  min="0" class="form-control{{ $errors->has('zone') ? ' is-invalid' : '' }}" value="{{ old('zone') }}"   autofocus required>
 
                     @if ($errors->has('zone'))
                         <span class="invalid-feedback" role="alert">

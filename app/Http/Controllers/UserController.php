@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Country;
 use App\City;
@@ -57,13 +59,46 @@ class UserController extends Controller
             'country_id' => ['required', 'integer'],
             'state_id' => ['required', 'integer',],
             'city_id' => ['required', 'integer'],
-            'zone' => ['required', 'integer'] /*
-            'street' => ['required','integer'],
-            'avenue' => ['required', 'integer'],
-            'url_image' => ['required', 'max:1999']*/
+            'zone' => ['required', 'integer'], 
+            'street' => ['required','integer'],/*
+            'avenue' => ['required', 'integer'],*/
+            'url_image' => ['image', 'max:1999']
         ]);
         //dd($request->url_image);
-        dd($request->hasFile('url_image'));
+        $user=USer::find(auth()->user()->id);
+        $user->country_id=$request->country_id;
+        $user->state_id=$request->state_id;
+        $user->city_id=$request->city_id;
+        $user->zone=$request->zone;
+        $user->street=$request->street;
+        $user->avenue=$request->avenue;
+
+        //******carga de imagen**********//
+        if($request->hasFile('url_image')) {
+            // Get filename with extension            
+                //$filenameWithExt = $request->file('image')->getClientOriginalName();
+            // Get just filename
+                //$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
+            $filename = $user->id;       
+           // Get just ext
+            $extension = $request->file('url_image')->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore = $filename.'.'.$extension;  
+          // Upload Image //********nombre de carpeta para almacenar*****
+            $path = $request->file('url_image')->storeAs('public/users', $fileNameToStore);
+        } else {
+            $fileNameToStore = '/users/default.jpg';
+        }
+        //******carga de imagen**********//
+
+        $user->url_image='/users/'.$fileNameToStore;
+        if ($user->save()) {
+            return redirect ('/users/'.$user->id);
+        }
+        else{
+            return abort (404);
+        }
+        
     }
 
     /**
@@ -75,6 +110,9 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user=User::findOrFail($id);
+        $roles=Role::all();
+        return view('users.show', ['user'=>$user, 'roles'=>$roles]);
     }
 
     /**

@@ -228,7 +228,7 @@
                                     @else
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
-                                    <img src="{{ asset('images/icon/avatar-01.jpg') }}" alt="{{ Auth::user()->name }}" />
+                                    <img src="/storage{{ auth()->user()->url_image }}" alt="{{ Auth::user()->name }}" />
                                 </div>
                                 <div class="content">
                                     <a class="js-acc-btn" href="#">{{ Auth::user()->name }}</a>
