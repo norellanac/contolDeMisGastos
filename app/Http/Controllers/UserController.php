@@ -65,7 +65,7 @@ class UserController extends Controller
             'url_image' => ['image', 'max:1999']
         ]);
         //dd($request->url_image);
-        $user=USer::find(auth()->user()->id);
+        $user=User::find(auth()->user()->id);
         $user->country_id=$request->country_id;
         $user->state_id=$request->state_id;
         $user->city_id=$request->city_id;
@@ -79,19 +79,26 @@ class UserController extends Controller
                 //$filenameWithExt = $request->file('image')->getClientOriginalName();
             // Get just filename
                 //$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
-            $filename = $user->id;       
+            $filename = $user->email;       
            // Get just ext
             $extension = $request->file('url_image')->getClientOriginalExtension();
             //Filename to store
             $fileNameToStore = $filename.'.'.$extension;  
           // Upload Image //********nombre de carpeta para almacenar*****
             $path = $request->file('url_image')->storeAs('public/users', $fileNameToStore);
-        } else {
-            $fileNameToStore = '/users/default.jpg';
+            $user->url_image='/storage/users/'.$fileNameToStore;
         }
         //******carga de imagen**********//
 
-        $user->url_image='/users/'.$fileNameToStore;
+
+
+        $role_user= Role::where('name','=', 'user')->get(); //busca en la tabla de roles de spite si existe con el nombre
+        if ( sizeof($role_user)<=0){ //si no encuentra resultados crea el rol para spite
+            Role::create(['name' => 'user']);
+        }
+        //$user->role_id=$role_user->id;
+        $user->syncRoles(['user']);
+        $user->role_id=$role_user[0]->id;
         if ($user->save()) {
             return redirect ('/users/'.$user->id);
         }

@@ -55,12 +55,12 @@
                             <div class="table-data__info">
                                 <h6>{{$user->name}}</h6>
                                 <span>
-                                                                <a href="#">{{$user->mail}}</a>
+                                                                <a href="mailto:{{$user->email}}">{{$user->email}}</a>
                                                             </span>
                             </div>
                         </td>
                         <td>
-                            <span class="role admin">admin</span>
+                            <span class="role {{ auth()->user()->getRoleNames()[0]}}">{{ auth()->user()->getRoleNames()[0]}}</span>
                         </td>
                         <td>
                             <div class="rs-select2--trans rs-select2--sm">
@@ -94,7 +94,7 @@
                             </div>
                         </td>
                         <td>
-                            <span class="role user">user</span>
+                            <span class="role admin">admin</span>
                         </td>
                         <td>
                             <div class="rs-select2--trans rs-select2--sm">

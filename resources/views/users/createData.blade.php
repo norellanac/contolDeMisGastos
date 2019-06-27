@@ -1,6 +1,14 @@
 @extends('layouts.dashboardUser')
-
 @section('content')
+@if (Auth::check() && is_null(Auth::user()->country_id) )
+   <<div class="text-center sufee-alert alert with-close alert-danger alert-dismissible fade show">
+    <span class="badge badge-pill badge-danger">Completa tu información</span> <br>
+    Por favor completa la información para poder iniciar a registrar tus ingresos y egresos.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 <div class="login-wrap">
     <div class="login-content">
         <div class="login-logo">

@@ -1,3 +1,9 @@
+
+@if (Auth::check() && is_null(Auth::user()->country_id) && Route::getFacadeRoot()->current()->uri()!='users/create')
+   <script type="text/javascript">
+       window.location = "{{ url('/users/create') }}";//here double curly bracket
+   </script>
+@else
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -51,7 +57,7 @@
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
-                        <a href="#">
+                        <a href="{{url('/')}}">
                             <img src="{{ asset('images/icon/logo-white.png') }}" alt="CoolAdmin" />
                         </a>
                     </div>
@@ -228,7 +234,7 @@
                                     @else
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
-                                    <img src="/storage{{ auth()->user()->url_image }}" alt="{{ Auth::user()->name }}" />
+                                    <img src="{{ auth()->user()->url_image }}" alt="{{ Auth::user()->name }}" />
                                 </div>
                                 <div class="content">
                                     <a class="js-acc-btn" href="#">{{ Auth::user()->name }}</a>
@@ -237,7 +243,7 @@
                                     <div class="info clearfix">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{{ asset('images/icon/avatar-01.jpg') }}" alt="{{ Auth::user()->name }}" />
+                                                <img src="{{ auth()->user()->url_image }}" alt="{{ Auth::user()->name }}" />
                                             </a>
                                         </div>
                                         <div class="content">
@@ -398,44 +404,47 @@
         </header>
         <div class="sub-header-mobile-2 d-block d-lg-none">
             <div class="header__tool">
-                <div class="header-button-item has-noti js-item-menu">
-                    <i class="zmdi zmdi-notifications"></i>
-                    <div class="notifi-dropdown notifi-dropdown--no-bor js-dropdown">
-                        <div class="notifi__title">
-                            <p>You have 3 Notifications</p>
-                        </div>
-                        <div class="notifi__item">
-                            <div class="bg-c1 img-cir img-40">
-                                <i class="zmdi zmdi-email-open"></i>
+                @auth
+                    <div class="header-button-item has-noti js-item-menu">
+                        <i class="zmdi zmdi-notifications"></i>
+                        <div class="notifi-dropdown notifi-dropdown--no-bor js-dropdown">
+                            <div class="notifi__title">
+                                <p>You have 3 Notifications</p>
                             </div>
-                            <div class="content">
-                                <p>You got a email notification</p>
-                                <span class="date">April 12, 2018 06:50</span>
+                            <div class="notifi__item">
+                                <div class="bg-c1 img-cir img-40">
+                                    <i class="zmdi zmdi-email-open"></i>
+                                </div>
+                                <div class="content">
+                                    <p>You got a email notification</p>
+                                    <span class="date">April 12, 2018 06:50</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="notifi__item">
-                            <div class="bg-c2 img-cir img-40">
-                                <i class="zmdi zmdi-account-box"></i>
+                            <div class="notifi__item">
+                                <div class="bg-c2 img-cir img-40">
+                                    <i class="zmdi zmdi-account-box"></i>
+                                </div>
+                                <div class="content">
+                                    <p>Your account has been blocked</p>
+                                    <span class="date">April 12, 2018 06:50</span>
+                                </div>
                             </div>
-                            <div class="content">
-                                <p>Your account has been blocked</p>
-                                <span class="date">April 12, 2018 06:50</span>
+                            <div class="notifi__item">
+                                <div class="bg-c3 img-cir img-40">
+                                    <i class="zmdi zmdi-file-text"></i>
+                                </div>
+                                <div class="content">
+                                    <p>You got a new file</p>
+                                    <span class="date">April 12, 2018 06:50</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="notifi__item">
-                            <div class="bg-c3 img-cir img-40">
-                                <i class="zmdi zmdi-file-text"></i>
+                            <div class="notifi__footer">
+                                <a href="#">All notifications</a>
                             </div>
-                            <div class="content">
-                                <p>You got a new file</p>
-                                <span class="date">April 12, 2018 06:50</span>
-                            </div>
-                        </div>
-                        <div class="notifi__footer">
-                            <a href="#">All notifications</a>
                         </div>
                     </div>
-                </div>
+                @endauth
+
                 <div class="account-wrap ">
                             <!-- Authentication Links -->
                             @guest
@@ -446,7 +455,7 @@
                             @else
                     <div class="account-item account-item--style2 clearfix js-item-menu">
                         <div class="image">
-                            <img src="{{ asset('images/icon/avatar-01.jpg') }}" alt="{{ Auth::user()->name }}" />
+                            <img src="{{ auth()->user()->url_image }}" alt="{{ Auth::user()->name }}" />
                         </div>
                         <div class="content">
                             <a class="js-acc-btn" href="#">{{ Auth::user()->name }}</a>
@@ -455,7 +464,7 @@
                             <div class="info clearfix">
                                 <div class="image">
                                     <a href="#">
-                                        <img src="{{ asset('images/icon/avatar-01.jpg') }}" alt="{{ Auth::user()->name }}" />
+                                        <img src="{{ auth()->user()->url_image }}" alt="{{ Auth::user()->name }}" />
                                     </a>
                                 </div>
                                 <div class="content">
@@ -555,3 +564,4 @@
     <script src="{{ asset('js/main.js')}}"></script>
 </body>
 </html>
+@endif

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   mariadb:
-    image: 'bitnami/mariadb:latest'
+    image: 'bitnami/mariadb:10.1'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_USER=my_user
@@ -11,9 +11,7 @@ services:
 
   myapp:
     tty: true
-    image: 'bitnami/laravel:latest'
-    labels:
-      kompose.service.type: nodeport
+    image: bitnami/laravel:5-debian-9
     environment:
       - DB_HOST=mariadb
       - DB_USERNAME=my_user
@@ -25,3 +23,4 @@ services:
       - 3000:3000
     volumes:
       - ./:/app
+    # privileged: true # Privileged mode could be required to run this container under Windows

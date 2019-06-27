@@ -2,11 +2,14 @@
 @section('content')
             @section('welcome')
 
-	            @if (Auth::check())
-	                Hola, {{ Auth::user()->name }}
-	            
+	            @if (Auth::check() && is_null(Auth::user()->country_id))
+	               <script type="text/javascript">
+                       window.location = "{{ url('/users/create') }}";//here double curly bracket
+                   </script>
+	            @elseif (Auth::check() && !is_null(Auth::user()->country_id))
+                    Hola, {{ Auth::user()->name }}
 	            @else
-	            Bienvenido
+                   Bienvenido
 	            @endif
             @endsection
 
