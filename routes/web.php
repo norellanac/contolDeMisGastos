@@ -41,3 +41,6 @@ Route::get('/ip', function () {
 
 Route::get('states/{country}', 'UserController@states');
 Route::get('cities/{state}', 'UserController@cities');
+Route::get('cat/', 'CategoryController@category');
+Route::get('sub/', 'CategoryController@subcategory');
+

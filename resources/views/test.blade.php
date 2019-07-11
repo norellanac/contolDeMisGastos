@@ -12,12 +12,80 @@
                    Bienvenido
 	            @endif
             @endsection
-
+            <div class="row">
+                                    <div class="col-lg-6" >
+                                        <div class="au-card au-card--no-shadow au-card--no-pad m-b-40 au-card--border" >
+                                            <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
+                                                <div class="bg-overlay bg-overlay--blue"></div>
+                                                <h3>
+                                                    <i class="zmdi zmdi-account-calendar"></i>Ingresos: 8,437</h3>
+                                                <a class="au-btn-plus" href="{{url('cat')}}">
+                                                    <i class="zmdi zmdi-plus"></i>
+                                                </a>
+                                            </div>
+                                            <div class="au-task js-list-load au-task--border bg-overlay--blue" >
+                                                <div class="au-task__title">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6" >
+                                        <div class="au-card au-card--no-shadow au-card--no-pad m-b-40 au-card--border" >
+                                            <div class="au-card-title" style="background-image:url('images/bg-title-02.jpg');">
+                                                <div class="bg-overlay bg-overlay-- " style="background-color:rgba(233, 127, 0, 0.9);"></div>
+                                                <h3>
+                                                    <i class="zmdi zmdi-account-calendar"></i>Gastos: 4,579 </h3>
+                                                <a class="au-btn-plus bg-danger" href="{{url('sub')}}">
+                                                    <i class="zmdi zmdi-plus"></i>
+                                                </a>
+                                            </div>
+                                            <div class="au-task js-list-load au-task--border bg-overlay--"  style="background-color:rgba(233, 127, 0, 0.9);">
+                                                <div class="au-task__title">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
             <!-- STATISTIC-->
-            <section class="statistic statistic2">
+            <section class="statistic statistic2 d-none">
                 <div class="container">
                     <div class="row">
-                        @yield('content')
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--green">
+                                <h2 class="number">10,368</h2>
+                                <span class="desc">members online</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-account-o"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--orange">
+                                <h2 class="number">388,688</h2>
+                                <span class="desc">items sold</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--blue">
+                                <h2 class="number">1,086</h2>
+                                <span class="desc">this week</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-calendar-note"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--red">
+                                <h2 class="number">$1,060,386</h2>
+                                <span class="desc">total earnings</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-money"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -26,11 +94,6 @@
             <!-- STATISTIC CHART-->
             <section class="statistic-chart">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3 class="title-5 m-b-35">statistics</h3>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <!-- CHART-->

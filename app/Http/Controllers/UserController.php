@@ -58,9 +58,9 @@ class UserController extends Controller
         request()->validate([
             'country_id' => ['required', 'integer'],
             'state_id' => ['required', 'integer',],
-            'city_id' => ['required', 'integer'],
+            /*'city_id' => ['required', 'integer'],
             'zone' => ['required', 'integer'], 
-            'street' => ['required','integer'],/*
+            'street' => ['required','integer'],
             'avenue' => ['required', 'integer'],*/
             'url_image' => ['image', 'max:1999']
         ]);

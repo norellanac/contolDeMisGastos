@@ -509,7 +509,7 @@
         <!-- PAGE CONTENT-->
         <div class="page-content--bgf7">
             <!-- WELCOME-->
-            <section class="welcome p-t-10">
+            <section class="welcome p-t-10 d-none d-sm-block">
                 <div class="container">
                     <div class="row text-center">
                         <div class="col-md-12">
