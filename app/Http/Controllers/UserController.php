@@ -70,8 +70,12 @@ class UserController extends Controller
         $user->state_id=$request->state_id;
         $user->city_id=$request->city_id;
         $user->zone=$request->zone;
-        $user->street=$request->street;
-        $user->avenue=$request->avenue;
+        if ($request->street) {
+            $user->street=$request->street;
+        }
+        if ($request->avenue) {
+            $user->avenue=$request->avenue;
+        }
 
         //******carga de imagen**********//
         if($request->hasFile('url_image')) {
@@ -100,7 +104,7 @@ class UserController extends Controller
         $user->syncRoles(['user']);
         $user->role_id=$role_user[0]->id;
         if ($user->save()) {
-            return redirect ('/users/'.$user->id);
+            return redirect ('/');
         }
         else{
             return abort (404);

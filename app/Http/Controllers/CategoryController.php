@@ -14,14 +14,18 @@ class CategoryController extends Controller
 
         //return view('home');
         //dd(Category::first()->subcategory);
-        return  Category::first()->subcategory 	;
+        //return  Category::first()->subcategory 
+        $categories = Category::all();
+        return view('categories.index',['categories'=>$categories]);
     }
-    public function subcategory()
+    public function subcategory($id)
     {	
 
         //return view('home');
         //dd( Subcategory::first()->category );
-        return ( Subcategory::first()->category );
+        //return ( Subcategory::first()->category );
+        $subcategories = Subcategory::where('category_id',$id)->get();
+        return view('categories.subcategories',['subcategories'=>$subcategories]);
     }
 }
 
