@@ -18,6 +18,7 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('categories.index',['categories'=>$categories]);
     }
+
     public function subcategory($id)
     {	
 
@@ -26,6 +27,16 @@ class CategoryController extends Controller
         //return ( Subcategory::first()->category );
         $subcategories = Subcategory::where('category_id',$id)->get();
         return view('categories.subcategories',['subcategories'=>$subcategories]);
+    }
+
+    public function record(Request $request)
+    {   
+        dd($request->request);
+        //return view('home');
+        //dd( Subcategory::first()->category );
+        //return ( Subcategory::first()->category );
+        //$subcategories = Subcategory::where('category_id',$id)->get();
+        return view('categories.record',['subcategories'=>'']);
     }
 }
 

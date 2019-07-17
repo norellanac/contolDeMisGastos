@@ -561,6 +561,17 @@
 
     <!-- Main JS-->
     <script src="{{ asset('js/main.js')}}"></script>
+
+
+    <script>
+        //funcion para pasar el valor de input y mostrarlo a otro input con JS
+        $('#origen').change(function() {
+            console.log('entro a funcion');
+            $('#destino').val($(this).val()*10); //el valor se multiplica por ::10:: para setear los puntos del sticker dependiendo del costo
+            $('#destino1').val($(this).val());
+            console.log('entro a funcion1');
+        });
+    </script>
 </body>
 </html>
 @endif
