@@ -17,6 +17,7 @@ class CreateAllCategoriesSubcategories extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('description');
+            $table->string('icon_image')->nullable();
             $table->timestamps();
         });
 
@@ -25,6 +26,7 @@ class CreateAllCategoriesSubcategories extends Migration
             $table->string('name');
             $table->string('description');
             $table->unsignedBigInteger('category_id');
+            $table->string('icon_image')->nullable();
             $table->foreign('category_id')
                   ->references('id')->on('categories');
             $table->timestamps();

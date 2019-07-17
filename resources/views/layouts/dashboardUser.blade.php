@@ -1,4 +1,3 @@
-
 @if (Auth::check() && is_null(Auth::user()->country_id) && Route::getFacadeRoot()->current()->uri()!='users/create')
    <script type="text/javascript">
        window.location = "{{ url('/users/create') }}";//here double curly bracket

@@ -1,3 +1,7 @@
+@php
+$colors = array("primary", "secondary", "success", "danger", "warning", "info");
+$iColors=1;
+@endphp
 @extends('layouts.dashboardUser')
 @section('content')
 @section('welcome','Control de usuarios')
@@ -7,19 +11,25 @@
         <div>
             <div class="row">
                 @foreach ($categories as $category)
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="card statistic__item">
+                    <div class="col-sm-6 col-md-6 col-lg-3" >
+                        <div class="card statistic__item bg-{{$colors[$iColors++]}}">
+                            {{--<div class="card statistic__item" style="background-color: #5CAFE066">--}}
                             <a href="{{url('sub')}}/{{$category->id}}">
                                 <div class="mx-auto d-block">
-                                    <h2 class="number"><i class="zmdi zmdi-calendar-note"></i></h2>
-                                    <span class="desc">{{$category->name}}</span>
+                                    <h2 class="number"><i class="text-white {{$category->icon_image}}"></i></h2>
+                                    <span class="text-white">{{$category->name}}</span>
                                     <div class="icon">
-                                        <i class="zmdi zmdi-calendar-note"></i>
+                                        <i class="text-dark {{$category->icon_image}}"></i>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
+                    @php
+                    if ($iColors>4) {
+                        $iColors=0;
+                    }
+                    @endphp
                 @endforeach
                 
                 <div class="col-sm-6 col-md-6 col-lg-3">
@@ -50,7 +60,12 @@
     </div>
     <div class="card-body">
         @foreach ($categories as $category)
-            <a href="{{url('sub/'. $category->id)}}" class="btn btn-block btn-outline-primary btn-lg">{{$category->name}}</a>
+            <a href="{{url('sub/'. $category->id)}}" class="btn btn-block btn-outline-{{$colors[$iColors++]}} btn-lg">{{$category->name}} <span class="{{$category->icon_image}}"></span> </a>
+            @php
+            if ($iColors>4) {
+                $iColors=0;
+            }
+            @endphp
         @endforeach
     </div>
 </div>
