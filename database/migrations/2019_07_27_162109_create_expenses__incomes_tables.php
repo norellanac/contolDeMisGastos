@@ -28,6 +28,8 @@ class CreateExpensesIncomesTables extends Migration
       $table->bigIncrements('id');
       $table->timestamps();
       $table->string('description')->nullable();
+      $table->integer('quantity')->nullable();
+      $table->integer('total');
 
       $table->unsignedBigInteger('subcategory_id');
       $table->foreign('subcategory_id')
@@ -42,7 +44,9 @@ class CreateExpensesIncomesTables extends Migration
       $table->bigIncrements('id');
       $table->timestamps();
       $table->string('description')->nullable();
-
+      $table->integer('quantity')->nullable();
+      $table->integer('total');
+      
       $table->unsignedBigInteger('subcategory_id');
       $table->foreign('subcategory_id')
       ->references('id')->on('subcategories');

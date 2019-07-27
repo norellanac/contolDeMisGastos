@@ -19,7 +19,7 @@
                                                 <div class="bg-overlay bg-overlay--blue"></div>
                                                 <h3>
                                                     <i class="zmdi zmdi-account-calendar"></i>Ingresos: 8,437</h3>
-                                                <a class="au-btn-plus" href="{{url('cat')}}">
+                                                <a class="au-btn-plus" href="{{url('cat/incomes')}}">
                                                     <i class="zmdi zmdi-plus"></i>
                                                 </a>
                                             </div>
@@ -35,7 +35,7 @@
                                                 <div class="bg-overlay bg-overlay-- " style="background-color:rgba(233, 127, 0, 0.9);"></div>
                                                 <h3>
                                                     <i class="zmdi zmdi-account-calendar"></i>Gastos: 4,579 </h3>
-                                                <a class="au-btn-plus bg-danger" href="{{url('sub')}}">
+                                                <a class="au-btn-plus bg-danger" href="{{url('cat')}}">
                                                     <i class="zmdi zmdi-plus"></i>
                                                 </a>
                                             </div>
@@ -170,5 +170,5 @@
             </section>
             <!-- END STATISTIC CHART-->
 
-            
-@endsection 
+
+@endsection

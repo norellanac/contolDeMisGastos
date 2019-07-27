@@ -21,12 +21,12 @@ class AddAddressToUsersTable extends Migration
             $table->integer('zone')->nullable();
             $table->string('street')->nullable();
             $table->string('avenue')->nullable();
-            /*$table->foreign('country_id')
+            $table->foreign('country_id')
                   ->references('id')->on('countries');
             $table->foreign('state_id')
                   ->references('id')->on('states');
             $table->foreign('city_id')
-                  ->references('id')->on('cities');*/
+                  ->references('id')->on('cities');
         });
     }
 
@@ -40,9 +40,9 @@ class AddAddressToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
 
-            /*$table->dropForeign(['country_id']);
+            $table->dropForeign(['country_id']);
             $table->dropForeign(['state_id']);
-            $table->dropForeign(['city_id']); */
+            $table->dropForeign(['city_id']); 
             $table->dropColumn('country_id');
             $table->dropColumn('state_id');
             $table->dropColumn('city_id');

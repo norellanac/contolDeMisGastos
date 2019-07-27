@@ -30,8 +30,8 @@ $iColors=1;
                     }
                     @endphp
                 @endforeach
-                
-                
+
+
         </div>
         <!-- END STATISTIC-->
     </div>
@@ -75,19 +75,19 @@ $iColors=1;
                     <div class="card">
                         <div class="card-header">{{$category->name}}</div>
                         <div class="card-body">
-                            <form method="POST" action="{{ url('record/')}}">
+                            <form method="POST" action="{{ url('record/expense')}}">
                                 @csrf
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Total egreso</label>
-                                    <input id="origen" name="cc-payment" type="number" class="form-control" aria-required="true" aria-invalid="false" >
+                                    <input id="origen" name="total" type="number" class="form-control" aria-required="true" aria-invalid="false" >
                                 </div>
                                 <div class="form-group has-success">
                                     <label for="cc-name" class="control-label mb-1">Cantidad</label>
-                                    <input id="destino" name="cc-name" type="number" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
+                                    <input id="destino" name="quantity" type="number" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
                                         autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
                                     <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
                                 </div>
-                                <input type="hidden" name="subcategory" value="{{$category->name}}">
+                                <input type="hidden" name="subcategory_id" value="{{$category->id}}">
                                 <div>
                                     <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                                         <i class="fa fa-save"></i>&nbsp;

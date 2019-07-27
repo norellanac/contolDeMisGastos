@@ -10,17 +10,17 @@ class CategoryController extends Controller
 {
     //
     public function category()
-    {	
+    {
 
         //return view('home');
         //dd(Category::first()->subcategory);
-        //return  Category::first()->subcategory 
+        //return  Category::first()->subcategory
         $categories = Category::all();
         return view('categories.index',['categories'=>$categories]);
     }
 
     public function subcategory($id)
-    {	
+    {
 
         //return view('home');
         //dd( Subcategory::first()->category );
@@ -29,14 +29,12 @@ class CategoryController extends Controller
         return view('categories.subcategories',['subcategories'=>$subcategories]);
     }
 
-    public function record(Request $request)
-    {   
-        dd($request->request);
-        //return view('home');
-        //dd( Subcategory::first()->category );
-        //return ( Subcategory::first()->category );
-        //$subcategories = Subcategory::where('category_id',$id)->get();
-        return view('categories.record',['subcategories'=>'']);
+    
+
+    public function incomes(Request $request)
+    {
+        $subcategories = Subcategory::where('category_id',1)->get();
+        return view('categories.subcaIncomes',['subcategories'=>$subcategories]);
     }
 }
 
