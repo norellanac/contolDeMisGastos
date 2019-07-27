@@ -15,9 +15,9 @@ class AddAddressToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->unsignedInteger('country_id')->nullable();
-            $table->unsignedInteger('state_id')->nullable();
-            $table->unsignedInteger('city_id')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->unsignedBigInteger('state_id')->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
             $table->integer('zone')->nullable();
             $table->string('street')->nullable();
             $table->string('avenue')->nullable();
@@ -39,7 +39,7 @@ class AddAddressToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            
+
             /*$table->dropForeign(['country_id']);
             $table->dropForeign(['state_id']);
             $table->dropForeign(['city_id']); */
