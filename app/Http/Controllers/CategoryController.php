@@ -15,7 +15,7 @@ class CategoryController extends Controller
         //return view('home');
         //dd(Category::first()->subcategory);
         //return  Category::first()->subcategory
-        $categories = Category::all();
+        $categories = Category::where('id',"<>",  8)->get();
         return view('categories.index',['categories'=>$categories]);
     }
 
@@ -29,11 +29,11 @@ class CategoryController extends Controller
         return view('categories.subcategories',['subcategories'=>$subcategories]);
     }
 
-    
+
 
     public function incomes(Request $request)
     {
-        $subcategories = Subcategory::where('category_id',1)->get();
+        $subcategories = Subcategory::where('category_id',8)->get();
         return view('categories.subcaIncomes',['subcategories'=>$subcategories]);
     }
 }
@@ -50,6 +50,7 @@ INSERT INTO categories (name, description, icon_image, created_at, updated_at) V
 INSERT INTO categories (name, description, icon_image, created_at, updated_at) VALUES ('Tecnología', 'descripcion', 'fas fa-mobile-alt', now(), now());
 INSERT INTO categories (name, description, icon_image, created_at, updated_at) VALUES ('Salud', 'descripcion', 'fas fa-heartbeat', now(), now());
 INSERT INTO categories (name, description, icon_image, created_at, updated_at) VALUES ('Educación', 'descripcion', 'fas fa-user-graduate', now(), now());
+INSERT INTO categories (name, description, icon_image, created_at, updated_at) VALUES ('Ingresos', 'descripcion', 'fas  fa-money', now(), now());
 
 set foreign_key_checks=0;
 truncate table subcategories;
@@ -90,6 +91,13 @@ INSERT INTO subcategories (name, description, icon_image, category_id, created_a
 INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Cursos Educativos', 'Descripcion', 'fas fa-utensils', 7, now(), now());
 INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Herramientas educativas', 'Descripcion', 'fas fa-utensils', 7, now(), now());
 INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Inscripción A cursos', 'Descripcion', 'fas fa-utensils', 7, now(), now());
+INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Salarios', 'Descripcion', 'fas fa-money', 8, now(), now());
+INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Proyectos personales', 'Descripcion', 'fas fa-money', 8, now(), now());
+INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Cheques', 'Descripcion', 'fas fa-money', 8, now(), now());
+INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Prestamo', 'Descripcion', 'fas fa-money', 8, now(), now());
+INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Bono', 'Descripcion', 'fas fa-money', 8, now(), now());
+INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Salarios', 'Descripcion', 'fas fa-money', 8, now(), now());
+
 
 
 

@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo("App\City", 'city_id');
     }
+
+    public function account()
+    {
+        return $this->hasOne("App\Account");
+    }
 }

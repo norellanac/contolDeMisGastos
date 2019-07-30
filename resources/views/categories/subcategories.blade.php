@@ -6,6 +6,15 @@ $iColors=1;
 @section('content')
 @section('welcome','Subcategorias')
 <div class="row d-none d-sm-block">
+  @if (session('message'))
+  <div class="sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
+    <span class="badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
+    {{ session('message') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  @endif
     <div class="col-lg-12">
         <!-- STATISTIC-->
         <div>
