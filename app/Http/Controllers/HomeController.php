@@ -34,9 +34,7 @@ class HomeController extends Controller
 
       if (auth()->user()) {
         //dd('select * from incomes where account_id=' . auth()->user()->account->id . ' union all select * from expenses where account_id='. auth()->user()->account->id .' order by created_at desc limit 5; ');
-        $data=DB::select('select * from incomes where account_id=' . auth()->user()->account->id . ' union all select * from expenses where account_id='. auth()->user()->account->id .' order by created_at desc limit 5; ');
         $accounts=Account::where('user_id','=', auth()->user()->id)->first();
-        $chartSubData = DB::select('select subcategories.name, count(expenses.subcategory_id) as total FROM expenses  JOIN subcategories  ON expenses.subcategory_id=subcategories.id where account_id='. auth()->user()->account->id . ' GROUP BY  (expenses.subcategory_id) order by total desc;'  );
         if (!$accounts) {
           $accounts=new  Account;
           $accounts->user_id=auth()->user()->id;
@@ -51,11 +49,15 @@ class HomeController extends Controller
           // code...
           $out=$outDB->sum('total');
         }
-
+        $chartSubData = DB::select('select subcategories.name, count(expenses.subcategory_id) as total FROM expenses  JOIN subcategories  ON expenses.subcategory_id=subcategories.id where account_id='. auth()->user()->account->id . ' GROUP BY  (expenses.subcategory_id) order by total desc;'  );
+        //$data=DB::select('select * from incomes where account_id=' . auth()->user()->account->id . ' union all select * from expenses where account_id='. auth()->user()->account->id .' order by created_at desc limit 5; ');
+        $data=Expense::where('account_id', '=' ,auth()->user()->account->id )->orderBy('id', 'desc')->skip(0)->take(5)->get();
+        //dd($data->first);
       }
       else {
-        // code...
-        $data=DB::select('select * from incomes union all select * from expenses order by created_at desc limit 5; ');
+        // query que une tabla de ingresos y egresos
+        //$data=DB::select('select * from incomes union all select * from expenses order by created_at desc limit 5; ');
+        $data=Expense::where('id', '>' ,0 )->orderBy('id', 'desc')->skip(0)->take(5)->get();
         $in=2900;
         $out=1350 * -1;
         $chartSubData = DB::select('select subcategories.name, count(expenses.subcategory_id) as total FROM expenses  JOIN subcategories  ON expenses.subcategory_id=subcategories.id GROUP BY  (expenses.subcategory_id) order by total desc;');

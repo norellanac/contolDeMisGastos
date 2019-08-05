@@ -16,14 +16,14 @@ Bienvenido
   <div class="col-lg-6" >
     <div class="au-card au-card--no-shadow au-card--no-pad m-b-40 au-card--border" >
       <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
-        <div class="bg-overlay bg-overlay--blue"></div>
+        <div class="bg-overlay bg-overlay--blue" ></div>
         <h3>
           <i class="zmdi zmdi-account-calendar"></i>Ingresos: {{$in}}</h3>
-          <a class="au-btn-plus" href="{{url('cat/incomes')}}">
+          <a class="au-btn-plus bg-primary" href="{{url('cat/incomes')}}">
             <i class="zmdi zmdi-plus"></i>
           </a>
         </div>
-        <div class="au-task js-list-load au-task--border bg-overlay--blue" >
+        <div class="au-task js-list-load au-task--border bg-overlay--blue"  >
           <div class="au-task__title">
           </div>
         </div>
@@ -98,7 +98,7 @@ Bienvenido
           <div class="col-md-6 col-lg-4">
             <!-- CHART-->
             <div class="statistic-chart-1">
-              <h3 class="title-3 m-b-30">Historico</h3>
+              <h3 class="title-3 m-b-30">Top Gastos</h3>
               <div class="chart-wrap">
                 <canvas id="chartSubCat"></canvas>
               </div>
@@ -112,20 +112,16 @@ Bienvenido
           <div class="col-md-6 col-lg-4">
             <!-- TOP CAMPAIGN-->
             <div class="top-campaign">
-              <h3 class="title-3 m-b-30">Ultimos movimientos</h3>
+              <h3 class="title-3 m-b-30">Ultimos gastos</h3>
               <div class="table-responsive">
                 <table class="table table-top-campaign">
                   <tbody>
                     @foreach ($data as $data)
                     <tr>
-                      <td>{{$data->created_at}}</td>
+                      <td>{{$data->subCat->name}}</td>
                       <td>$ {{$data->total}}</td>
                     </tr>
                     @endforeach
-                    <tr>
-                      <td>5. France</td>
-                      <td>$10,366.96</td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -135,21 +131,21 @@ Bienvenido
           <div class="col-md-6 col-lg-4">
             <!-- CHART PERCENT-->
             <div class="chart-percent-2">
-              <h3 class="title-3 m-b-30">Resumen Q. {{$in+ $out}}</h3>
+              <h3 class="title-3 m-b-30">Disponible Q. {{$in+ $out}}</h3>
               <div class="chart-wrap">
-                <canvas id="percent-chart2"></canvas>
+                <canvas id="chartIncExp"></canvas>
                 <div id="chartjs-tooltip">
                   <table></table>
                 </div>
               </div>
               <div class="chart-info">
                 <div class="chart-note">
-                  <span class="dot dot--blue"></span>
-                  <span>Ingresos</span>
-                </div>
-                <div class="chart-note">
                   <span class="dot dot--red"></span>
                   <span>Gastos</span>
+                </div>
+                <div class="chart-note">
+                  <span class="dot dot--green"></span>
+                  <span>Ingresos</span>
                 </div>
               </div>
             </div>
@@ -162,6 +158,21 @@ Bienvenido
     @endsection
     @section('sectionJS')
     <script type="text/javascript">
+    //escala de colores porcentual JS
+    function perc2color(perc) {
+      var r, g, b = 0;
+      if(perc < 50) {
+        r = 255;
+        g = Math.round(5.1 * perc);
+      }
+      else {
+        g = 255;
+        r = Math.round(510 - 5.10 * perc);
+      }
+      var h = r * 0x10000 + g * 0x100 + b * 0x1;
+      return '#' + ('000000' + h.toString(16)).slice(-6);
+    }
+    //escala de colores porcentual JS
     try {
       //WidgetChart 5
       var ctx = document.getElementById("chartSubCat");
@@ -184,7 +195,12 @@ Bienvenido
                 ],
                 borderColor: "transparent",
                 borderWidth: "0",
-                backgroundColor: "#00aae4",
+                backgroundColor: [
+                  @foreach ($chartSubData as $dataGrafico)
+                  perc2color({{ $dataGrafico->total * 100 / (sizeOf($chartSubData) +1) }} ),
+                  @endforeach
+
+                ],
               }
             ]
           },
@@ -202,6 +218,74 @@ Bienvenido
               yAxes: [{
                 display: false
               }]
+            }
+          }
+        });
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+
+
+    try {
+
+      // Percent Chart 2
+      var ctx = document.getElementById("chartIncExp");
+      if (ctx) {
+        ctx.height = 209;
+        var myChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            datasets: [
+              {
+                label: "My First dataset",
+                data: [{{$in}}, {{$out * -1}}],
+                backgroundColor: [
+                  '#6fbf60',
+                  '#fa4251'
+                ],
+                hoverBackgroundColor: [
+                  '#6fbf60',
+                  '#fa4251'
+                ],
+                borderWidth: [
+                  0, 0
+                ],
+                hoverBorderColor: [
+                  'transparent',
+                  'transparent'
+                ]
+              }
+            ],
+            labels: [
+              'Q.',
+              'Q.'
+            ]
+          },
+          options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            cutoutPercentage: 87,
+            animation: {
+              animateScale: true,
+              animateRotate: true
+            },
+            legend: {
+              display: false,
+              position: 'bottom',
+              labels: {
+                fontSize: 14,
+                fontFamily: "Poppins,sans-serif"
+              }
+
+            },
+            tooltips: {
+              titleFontFamily: "Poppins",
+              xPadding: 15,
+              yPadding: 10,
+              caretPadding: 0,
+              bodyFontSize: 16,
             }
           }
         });
