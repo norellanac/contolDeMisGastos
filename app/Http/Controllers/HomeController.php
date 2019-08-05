@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+//use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Income;
 use App\Expense;
 use App\Account;
+use App\Subcategory;
 
 class HomeController extends Controller
 {
@@ -34,6 +36,7 @@ class HomeController extends Controller
         //dd('select * from incomes where account_id=' . auth()->user()->account->id . ' union all select * from expenses where account_id='. auth()->user()->account->id .' order by created_at desc limit 5; ');
         $data=DB::select('select * from incomes where account_id=' . auth()->user()->account->id . ' union all select * from expenses where account_id='. auth()->user()->account->id .' order by created_at desc limit 5; ');
         $accounts=Account::where('user_id','=', auth()->user()->id)->first();
+        $chartSubData = DB::select('select subcategories.name, count(expenses.subcategory_id) as total FROM expenses  JOIN subcategories  ON expenses.subcategory_id=subcategories.id where account_id='. auth()->user()->account->id . ' GROUP BY  (expenses.subcategory_id) order by total desc;'  );
         if (!$accounts) {
           $accounts=new  Account;
           $accounts->user_id=auth()->user()->id;
@@ -55,8 +58,12 @@ class HomeController extends Controller
         $data=DB::select('select * from incomes union all select * from expenses order by created_at desc limit 5; ');
         $in=2900;
         $out=1350 * -1;
+        $chartSubData = DB::select('select subcategories.name, count(expenses.subcategory_id) as total FROM expenses  JOIN subcategories  ON expenses.subcategory_id=subcategories.id GROUP BY  (expenses.subcategory_id) order by total desc;');
       }
-
-        return view('test', ['data'=>$data, 'in'=>$in, 'out'=>$out]);
+      //seccion para la informacion de los graficoss
+      //seleciona los registros agrupando y contando por categoriass
+      $subcategory= DB::selectOne('select * from subcategories where id=9');
+      //dd($chartSubData);
+          return view('test', ['data'=>$data, 'in'=>$in, 'out'=>$out, 'chartSubData'=>$chartSubData]);
     }
 }
