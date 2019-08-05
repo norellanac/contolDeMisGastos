@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Income;
 use App\Expense;
 use App\Account;
+use App\Subcategory;
 
 class HomeController extends Controller
 {
@@ -56,7 +57,9 @@ class HomeController extends Controller
         $in=2900;
         $out=1350 * -1;
       }
-
-        return view('test', ['data'=>$data, 'in'=>$in, 'out'=>$out]);
+      //seccion para la informacion de los graficoss
+      $subcategory= DB::selectOne('select * from subcategories where id=9');
+      //dd($subcategory);
+          return view('test', ['data'=>$data, 'in'=>$in, 'out'=>$out, 'subcategory'=>$subcategory]);
     }
 }

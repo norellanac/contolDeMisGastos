@@ -39,7 +39,7 @@
 
                 <div class="form-group">
                     <label>Departamento</label>
-                    <select type="number" name="state_id" id="departamentos" placeholder="seller_id de stickers" class="form-control{{ $errors->has('state_id') ? ' is-invalid' : '' }}" autofocus required> 
+                    <select type="number" name="state_id" id="departamentos" placeholder="seller_id de stickers" class="form-control{{ $errors->has('state_id') ? ' is-invalid' : '' }}" autofocus required>
                         <option value="">Departamentos</option>
                     </select>
                     @if ($errors->has('state_id'))
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <label>Municipio</label>
-                    <select type="number" name="city_id" id="cities" placeholder="city_id de stickers" class="form-control{{ $errors->has('city_id') ? ' is-invalid' : '' }}" autofocus required> 
+                    <select type="number" name="city_id" id="cities" placeholder="city_id de stickers" class="form-control{{ $errors->has('city_id') ? ' is-invalid' : '' }}" autofocus required>
                         <option value="">Ciudad</option>
                     </select>
                     @if ($errors->has('city_id'))
@@ -161,3 +161,6 @@
   });
 </script>
 @endsection
+@section('sectionJS')
+
+@endSection

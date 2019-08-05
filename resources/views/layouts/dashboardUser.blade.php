@@ -572,6 +572,7 @@
             console.log('entro a funcion1');
         });
     </script>
+      @yield('sectionJS')
 </body>
 </html>
 @endif
