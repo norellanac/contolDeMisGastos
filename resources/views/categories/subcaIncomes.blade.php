@@ -75,7 +75,7 @@ $iColors=1;
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticModalLabel">Añadir Registro </h5>
+        <h5 class="modal-title" id="staticModalLabel">Añadir Ingreso </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -87,10 +87,10 @@ $iColors=1;
             <form method="POST" action="{{ url('record/income')}}">
               @csrf
               <div class="form-group">
-                <label for="cc-payment" class="control-label mb-1">Total egreso</label>
+                <label for="cc-payment" class="control-label mb-1">Total Q.</label>
                 <input id="origen" name="total" type="number" class="form-control" aria-required="true" aria-invalid="false" >
               </div>
-              <div class="form-group has-success">
+              <div class="form-group has-success d-none">
                 <label for="cc-name" class="control-label mb-1">Cantidad</label>
                 <input id="destino" name="quantity" type="number" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
                 autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
@@ -109,8 +109,7 @@ $iColors=1;
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Confirm</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>

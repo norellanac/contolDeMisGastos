@@ -96,6 +96,29 @@ Bienvenido
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-lg-4">
+            <!-- CHART PERCENT-->
+            <div class="chart-percent-2">
+              <h3 class="title-3 m-b-30">Disponible Q. {{$in+ $out}}</h3>
+              <div class="chart-wrap">
+                <canvas id="chartIncExp"></canvas>
+                <div id="chartjs-tooltip">
+                  <table></table>
+                </div>
+              </div>
+              <div class="chart-info">
+                <div class="chart-note">
+                  <span class="dot dot--red"></span>
+                  <span>Gastos</span>
+                </div>
+                <div class="chart-note">
+                  <span class="dot dot--green"></span>
+                  <span>Ingresos</span>
+                </div>
+              </div>
+            </div>
+            <!-- END CHART PERCENT-->
+          </div>
+          <div class="col-md-6 col-lg-4">
             <!-- CHART-->
             <div class="statistic-chart-1">
               <h3 class="title-3 m-b-30">Top Gastos</h3>
@@ -128,29 +151,7 @@ Bienvenido
             </div>
             <!-- END TOP CAMPAIGN-->
           </div>
-          <div class="col-md-6 col-lg-4">
-            <!-- CHART PERCENT-->
-            <div class="chart-percent-2">
-              <h3 class="title-3 m-b-30">Disponible Q. {{$in+ $out}}</h3>
-              <div class="chart-wrap">
-                <canvas id="chartIncExp"></canvas>
-                <div id="chartjs-tooltip">
-                  <table></table>
-                </div>
-              </div>
-              <div class="chart-info">
-                <div class="chart-note">
-                  <span class="dot dot--red"></span>
-                  <span>Gastos</span>
-                </div>
-                <div class="chart-note">
-                  <span class="dot dot--green"></span>
-                  <span>Ingresos</span>
-                </div>
-              </div>
-            </div>
-            <!-- END CHART PERCENT-->
-          </div>
+
         </div>
       </div>
     </section>

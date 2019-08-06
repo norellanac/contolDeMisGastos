@@ -35,7 +35,7 @@ class RecordsController extends Controller
       $expense->account_id=$request->user()->account->id;
       $expense->quantity=$request->quantity;
       if ($expense->save()) {
-        return redirect ('/cat/')->with(['message'=>'Se agregagó el registro correctamente', 'alert'=>'warning']);
+        return redirect ('/record/info/'. $request->subcategory_id)->with(['message'=>'Se agregagó el registro correctamente', 'alert'=>'warning']);
       }
       else {
         return redirect ('/cat/')->with(['message'=>'Ocurrió un error al guardar el registro', 'alert'=>'danger']);
