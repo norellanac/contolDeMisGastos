@@ -29,6 +29,7 @@ class CreateProductsAndSellerTables extends Migration
             $table->string('name');
             $table->float('price', 8, 2);
             $table->string('description')->nullable();
+            $table->string('url_image');
             $table->timestamps();
 
             $table->unsignedBigInteger('seller_id');
@@ -42,6 +43,7 @@ class CreateProductsAndSellerTables extends Migration
 
         Schema::create('products_records', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('quantity')->nullable();
             $table->timestamps();
 
             $table->unsignedBigInteger('expense_id');
