@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Product;
+use App\Products_record;
 
 use Illuminate\Http\Request;
 
@@ -35,8 +36,16 @@ class Prduct_recordController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        dd($request);
+        $productRecord= new Products_record;
+        $productRecord->quantity=$request->quant[2];
+        $productRecord->product_id=$request->product_id;
+        $productRecord->expense_id=$request->expense_id;
+        if ($productRecord->save()) {
+          return redirect ('/cat/')->with(['message'=>'Se agregagó el registro correctamente', 'alert'=>'success']);
+        }
+        else {
+          return redirect ('/sub/'.$request->subcategory_id)->with(['message'=>'Ocurrió un error al guardar el registro', 'alert'=>'danger']);
+        }
     }
 
     /**

@@ -38,7 +38,7 @@ height: auto;
           <div class="carousel-item {{$active}}">
             <div class="row mx-auto bg-info">
               <div class="col-12">
-                <h5 class="card-title mb-3 text-white mx-auto ">{{$product->name}}</h5>
+                <h5 class="card-title mb-3 text-white mx-auto ">{{$product->name}} -  {{$product->price}}</h5>
               </div>
             </div>
             <div class="mx-auto bg-info">
@@ -58,7 +58,8 @@ height: auto;
                           </span>
                           <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100">
                           <input type="hidden" name="product_id" value="{{$product->id}}">
-                          <input type="hidden" name="desc" value="{{$product->name}}">
+                          <input type="hidden" name="subcategory_id" value="{{$product->subcategory_id}}">
+                          <input type="hidden" name="expense_id" value="{{session('expense')->id}}">
                           <span class="input-group-btn">
                             <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
                               <i class="fa fa-plus"></i>

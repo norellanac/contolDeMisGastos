@@ -1,7 +1,15 @@
 @extends('layouts.dashboardUser')
 @section('content')
 @section('welcome')
-
+@if (session('message'))
+<div class="sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
+  <span class="badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
+  {{ session('message') }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
 @if (Auth::check() && is_null(Auth::user()->country_id))
 <script type="text/javascript">
 window.location = "{{ url('/users/create') }}";//here double curly bracket
@@ -126,8 +134,8 @@ Bienvenido
                 <canvas id="chartSubCat"></canvas>
               </div>
               <div class="statistic-chart-1-note">
-                <span class="big">10,368</span>
-                <span>/ 16220 items sold</span>
+                <span class="big"><i class="fa fa-bar-chart-o"></i></span>
+                <span>Categorias</span>
               </div>
             </div>
             <!-- END CHART-->
@@ -143,6 +151,16 @@ Bienvenido
                     <tr>
                       <td>{{$data->subCat->name}}</td>
                       <td>$ {{$data->total}}</td>
+                      @auth
+                      <td>
+                        <form class="" action="{{url('/record/expense/')}}" method="POST">
+                           @csrf
+                           @method('DELETE')
+                          <input type="hidden" name="id" value="{{$data->id}}">
+                          <button type="submit" name="button" class="btn btn-danger"><i class="zmdi zmdi-delete"></i></button>
+                        </form>
+                      </td>
+                      @endauth
                     </tr>
                     @endforeach
                   </tbody>
