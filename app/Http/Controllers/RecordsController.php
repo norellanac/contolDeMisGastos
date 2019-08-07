@@ -41,4 +41,13 @@ class RecordsController extends Controller
         return redirect ('/cat/')->with(['message'=>'Ocurrió un error al guardar el registro', 'alert'=>'danger']);
       }
     }
+
+    public function destroy($id)
+    {
+        //
+        $expense= Expense::find(1);
+        if ($expense->delete()) {
+          dd('borrado');
+        }
+    }
 }

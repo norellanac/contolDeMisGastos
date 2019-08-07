@@ -36,6 +36,7 @@ class Prduct_recordController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request);
     }
 
     /**

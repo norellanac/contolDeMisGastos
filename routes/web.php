@@ -47,4 +47,5 @@ Route::get('sub/{id}', 'CategoryController@subcategory')->middleware('auth');
 Route::post('record/', 'CategoryController@record')->middleware('auth');
 Route::post('record/income', 'RecordsController@incomes')->middleware('auth');
 Route::post('record/expense', 'RecordsController@expenses')->middleware('auth');
+Route::get('record/expense/del/{id}', 'RecordsController@destroy')->middleware('auth');
 Route::resource('record/info', 'Prduct_recordController')->middleware('auth');
