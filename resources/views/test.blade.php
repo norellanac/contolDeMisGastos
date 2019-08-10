@@ -1,15 +1,6 @@
 @extends('layouts.dashboardUser')
 @section('content')
 @section('welcome')
-@if (session('message'))
-<div class="sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
-  <span class="badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
-  {{ session('message') }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-@endif
 @if (Auth::check() && is_null(Auth::user()->country_id))
 <script type="text/javascript">
 window.location = "{{ url('/users/create') }}";//here double curly bracket
@@ -21,6 +12,18 @@ Bienvenido
 @endif
 @endsection
 <div class="row">
+  @if (session('message'))
+  <div class="col-12">
+    <div class="sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
+      <span class="badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
+      {{ session('message') }}
+      <a href="{{'/'}}" class="btn btn-link"> <i class="fa fa-home"></i> Ir a inicio</a>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  @endif
   <div class="col-lg-6" >
     <div class="au-card au-card--no-shadow au-card--no-pad m-b-40 au-card--border" >
       <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">

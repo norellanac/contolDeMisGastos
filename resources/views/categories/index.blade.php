@@ -4,7 +4,7 @@ $iColors=1;
 @endphp
 @extends('layouts.dashboardUser')
 @section('content')
-@section('welcome','Control de usuarios')
+@section('welcome','Registrar gasto')
 <div class="row d-none d-sm-block">
   @if (session('message'))
   <div class="sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
@@ -61,11 +61,8 @@ $iColors=1;
 </div>
 {{-- categories mobile --}}
 <div class="card d-block d-sm-none">
-    <div class="card-header">
-        <strong>Block Level Buttons </strong>
-        <small>Use this class
-            <code>.btn-block</code>
-        </small>
+    <div class="card-header ">
+        <strong class="mx-auto">Registrar gasto </strong>
     </div>
     <div class="card-body">
         @foreach ($categories as $category)

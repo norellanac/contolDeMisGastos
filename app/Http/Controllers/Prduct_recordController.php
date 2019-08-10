@@ -58,8 +58,15 @@ class Prduct_recordController extends Controller
     {
         //
         $products = Product::where('subcategory_id', '=', $id)->get();
+        
+        if ($products) {
+          return view('categories.productsInfo',['products'=>$products]);
+        }else {
+          return redirect('/');
+        }
+
         //dd( $products);
-        return view('categories.productsInfo',['products'=>$products]);
+
     }
 
     /**

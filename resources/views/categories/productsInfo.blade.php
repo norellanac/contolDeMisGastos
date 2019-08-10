@@ -14,19 +14,20 @@ width: auto;
 height: auto;
 }
 </style>
+@if (session('message'))
+<div class="sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
+  <span class="badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
+  {{ session('message') }}
+  <a href="{{'/'}}" class="btn btn-link"> <i class="fa fa-home"></i> Ir a inicio</a>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
 <div class="row">
-  @if (session('message'))
-  <div class="sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
-    <span class="badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
-    {{ session('message') }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  @endif
-  <div class="row">
+  @if($products)
     <!-- STATISTIC-->
-    <div class="col-12 col-xs-12 col-sm-12 col-md-4 mx-auto d-block mt-3 ">
+    <div class="col-12 col-xs-12 col-sm-12 col-offset-md-4 col-md-6 mx-auto d-block mt-3 ">
       <div id="carouselExampleControls1" class="carousel slide " data-ride="carousel">
         <div class="carousel-inner">
           @foreach ($products as $product)
@@ -37,7 +38,7 @@ height: auto;
           @endif
           <div class="carousel-item {{$active}}">
             <div class="row mx-auto bg-info">
-              <div class="col-12">
+              <div class="col-12 mx-auto text-center">
                 <h5 class="card-title mb-3 text-white mx-auto ">{{$product->name}} -  {{$product->price}}</h5>
               </div>
             </div>
@@ -59,7 +60,9 @@ height: auto;
                           <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100">
                           <input type="hidden" name="product_id" value="{{$product->id}}">
                           <input type="hidden" name="subcategory_id" value="{{$product->subcategory_id}}">
-                          <input type="hidden" name="expense_id" value="{{session('expense')->id}}">
+                          @if(session('expense'))
+                            <input type="hidden" name="expense_id" value="{{session('expense')->id}}">
+                          @endif
                           <span class="input-group-btn">
                             <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
                               <i class="fa fa-plus"></i>
@@ -91,205 +94,9 @@ height: auto;
         </a>
       </div>
     </div>
-    <div class="col-12 col-xs-12 col-sm-12 col-md-4 mx-auto d-block mt-3 ">
-      <div id="carouselExampleControls1" class="carousel slide " data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row mx-auto bg-info">
-              <div class="col-12">
-                <h5 class="card-title mb-3 text-white mx-auto">Card Image Title</h5>
-              </div>
-            </div>
-            <div class="mx-auto bg-info">
-              <img class="img-fluid mx-auto d-block"
-              src="https://www.diariofranquicias.com/uploads/s1/11/43/477_360_logo_mc_menu_big_mac.png"  width="50%" alt="Card image cap">
-              <div class="card-body">
-                <form class="" action="{{url('/record/info/')}}" method="post">
-                  @csrf
-                  <div class="row">
-                    <div class="offset-2 col-8">
-                      <div class="input-group mb-3">
-                        <div class="input-group">
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
-                              <i class="fa fa-minus"></i>
-                            </button>
-                          </span>
-                          <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100">
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
-                              <i class="fa fa-plus"></i>
-                            </button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="row">
-                    <div class=" offset-1 col-10">
-                      <button type="submit" name="button" class="btn btn-primary btn-block"><i class="fa fa-save"></i></button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item ">
-            <div class="row mx-auto bg-info">
-              <div class="col-12">
-                <h5 class="card-title mb-3 text-white mx-auto">Card Image Title</h5>
-              </div>
-            </div>
-            <div class="mx-auto bg-info">
-              <img class="img-fluid mx-auto d-block"
-              src="https://www.diariofranquicias.com/uploads/s1/11/43/477_360_logo_mc_menu_big_mac.png"  width="50%" alt="Card image cap">
-              <div class="card-body">
-                <form class="" action="{{url('/record/info/')}}" method="post">
-                  @csrf
-                  <div class="row">
-                    <div class="offset-2 col-8">
-                      <div class="input-group mb-3">
-                        <div class="input-group">
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
-                              <i class="fa fa-minus"></i>
-                            </button>
-                          </span>
-                          <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100">
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
-                              <i class="fa fa-plus"></i>
-                            </button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class=" offset-1 col-10">
-                      <button type="submit" name="button" class="btn btn-primary btn-block"><i class="fa fa-save"></i></button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon text-info" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls1" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="col-12 col-xs-12 col-sm-12 col-md-4 mx-auto d-block mt-3 ">
-      <div id="carouselExampleControls1" class="carousel slide " data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row mx-auto bg-info">
-              <div class="col-12">
-                <h5 class="card-title mb-3 text-white mx-auto">Card Image Title</h5>
-              </div>
-            </div>
-            <div class="mx-auto bg-info">
-              <img class="img-fluid mx-auto d-block"
-              src="https://www.diariofranquicias.com/uploads/s1/11/43/477_360_logo_mc_menu_big_mac.png"  width="50%" alt="Card image cap">
-              <div class="card-body">
-                <form class="" action="{{url('/record/info/')}}" method="post">
-                  @csrf
-                  <div class="row">
-                    <div class="offset-2 col-8">
-                      <div class="input-group mb-3">
-                        <div class="input-group">
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
-                              <i class="fa fa-minus"></i>
-                            </button>
-                          </span>
-                          <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100">
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
-                              <i class="fa fa-plus"></i>
-                            </button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class=" offset-1 col-10">
-                      <button type="submit" name="button" class="btn btn-primary btn-block"><i class="fa fa-save"></i></button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item ">
-            <div class="row mx-auto bg-info">
-              <div class="col-12">
-                <h5 class="card-title mb-3 text-white mx-auto">Card Image Title</h5>
-              </div>
-            </div>
-            <div class="mx-auto bg-info">
-              <img class="img-fluid mx-auto d-block"
-              src="https://www.diariofranquicias.com/uploads/s1/11/43/477_360_logo_mc_menu_big_mac.png"  width="50%" alt="Card image cap">
-              <div class="card-body">
-                <form class="" action="{{url('/record/info/')}}" method="post">
-                  @csrf
-                  <div class="row">
-                    <div class="offset-2 col-8">
-                      <div class="input-group mb-3">
-                        <div class="input-group">
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
-                              <i class="fa fa-minus"></i>
-                            </button>
-                          </span>
-                          <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100">
-                          <span class="input-group-btn">
-                            <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
-                              <i class="fa fa-plus"></i>
-                            </button>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class=" offset-1 col-10">
-                      <button type="submit" name="button" class="btn btn-primary btn-block"><i class="fa fa-save"></i></button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon text-info" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls1" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
-
-
+  @endif
   </div>
-</div>
 
 @endsection
 @section('sectionJS')

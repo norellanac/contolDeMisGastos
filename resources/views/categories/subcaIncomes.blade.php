@@ -4,12 +4,12 @@ $iColors=1;
 @endphp
 @extends('layouts.dashboardUser')
 @section('content')
-@section('welcome','Subcategorias')
+@section('welcome','Tipo de Ingreso')
 <div class="row d-none d-sm-block">
   @if (session('message'))
-  <div class="sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
+  <div class="mx-auto text-center sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
     <span class="badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
-    {{ session('message') }}
+    {{ session('message') }} <a href="{{'/'}}" class="btn btn-link"> <i class="fa fa-home"></i> Ir a inicio</a>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -48,11 +48,17 @@ $iColors=1;
 </div>
 {{-- categories mobile --}}
 <div class="card d-block d-sm-none">
-  <div class="card-header">
-    <strong>Block Level Buttons </strong>
-    <small>Use this class
-      <code>.btn-block</code>
-    </small>
+  @if (session('message'))
+  <div class="mx-auto sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
+    <span class="mx-auto badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
+    {{ session('message') }} <a href="{{'/'}}" class="btn btn-link"> <i class="fa fa-home"></i> Ir a inicio</a>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  @endif
+  <div class="card-header mx-auto">
+    <strong>Tipo de Ingreso </strong>
   </div>
   <div class="card-body">
     @foreach ($subcategories as $category)
