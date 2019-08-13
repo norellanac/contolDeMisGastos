@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label>Contraseña</label>
-                    <input id="password" type="password" class="au-input au-input--full{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    <input id="password" type="password" class="patternlock" class="au-input au-input--full{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                     @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
             </form>
             <div class="register-link">
                 <p>
-                    ¿Aún no tienes cuenta? 
+                    ¿Aún no tienes cuenta?
                     <a href="{{url('register')}}">Regístrate</a>
                 </p>
             </div>

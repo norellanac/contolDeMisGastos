@@ -29,7 +29,9 @@ Bienvenido
       <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
         <div class="bg-overlay bg-overlay--blue" ></div>
         <h3>
+          @if($in )
           <i class="zmdi zmdi-account-calendar"></i>Ingresos: {{$in}}</h3>
+          @endif
           <a class="au-btn-plus bg-primary" href="{{url('cat/incomes')}}">
             <i class="zmdi zmdi-plus"></i>
           </a>
@@ -45,7 +47,9 @@ Bienvenido
         <div class="au-card-title" style="background-image:url('images/bg-title-02.jpg');">
           <div class="bg-overlay bg-overlay-- " style="background-color:rgba(233, 127, 0, 0.9);"></div>
           <h3>
+            @if($out )
             <i class="zmdi zmdi-account-calendar"></i>Gastos: {{$out}} </h3>
+            @endif
             <a class="au-btn-plus bg-danger" href="{{url('cat')}}">
               <i class="zmdi zmdi-plus"></i>
             </a>
@@ -63,7 +67,9 @@ Bienvenido
         <div class="row">
           <div class="col-md-6 col-lg-3">
             <div class="statistic__item statistic__item--green">
+              @if($in )
               <h2 class="number">{{$in- $out}}</h2>
+              @endif
               <span class="desc">members online</span>
               <div class="icon">
                 <i class="zmdi zmdi-account-o"></i>
@@ -72,7 +78,9 @@ Bienvenido
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="statistic__item statistic__item--orange">
-              <h2 class="number">Q. {{$in- $out}}</h2>
+              @if($in )
+                <h2 class="number">Q. {{$in- $out}}</h2>
+              @endif
               <span class="desc">items sold</span>
               <div class="icon">
                 <i class="zmdi zmdi-shopping-cart"></i>
@@ -149,6 +157,7 @@ Bienvenido
               <h3 class="title-3 m-b-30">Ultimos gastos</h3>
               <div class="table-responsive">
                 <table class="table table-top-campaign">
+                  @if($data)
                   <tbody>
                     @foreach ($data as $data)
                     <tr>
@@ -167,6 +176,8 @@ Bienvenido
                     </tr>
                     @endforeach
                   </tbody>
+
+                  @endif
                 </table>
               </div>
             </div>

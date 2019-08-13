@@ -48,6 +48,9 @@
 
     <!-- Main CSS-->
     <link href="{{ asset('css/theme.css')}}" rel="stylesheet" media="all">
+
+    <link href="{{ asset('asset/css/patternlock.css')}}" rel="stylesheet" type="text/css">
+        <script src="{{ asset('asset/js/patternlock.js')}}"></script>
 </head>
 <body class="animsition">
     <div class="page-wrapper">
