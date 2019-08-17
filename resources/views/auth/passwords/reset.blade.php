@@ -9,7 +9,7 @@
             </a>
         </div>
         <div class="login-form">
-            <form method="POST" action="{{ route('password.update') }}">
+            <form method="POST" action="{{ route('password.update') }}" onsubmit="return submitform()">
                 @csrf
 
                 <input type="hidden" name="token" value="{{ $token }}">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label>Contraseña</label>
-                    <input id="password" type="password" class="au-input au-input--full{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    <input id="password" type="password" type="password" class="patternlock" class="au-input au-input--full{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                     @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
@@ -33,9 +33,9 @@
                         </span>
                     @endif
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                     <label>Confirmar Contraseña</label>
-                    <input id="password-confirm" type="password" class="au-input au-input--full" name="password_confirmation" required>
+                    <input id="password-confirm" type="hidden" class="au-input au-input--full" name="password_confirmation" required>
                 </div>
                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Guardar</button>
                 <div class="social-login-content">
@@ -55,3 +55,16 @@
     </div>
 </div>
 @endsection
+@section('sectionJS')
+<script>
+  function submitform(){
+    var pass = document.getElementById("password").value;
+    //Set
+    $('#password-confirm').val(pass);
+    /*console.log($('#password-confirm').val());
+    alert("You entered " + pass); */
+    return true;
+  }
+  </script>
+
+@endSection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+//use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Income;
 use App\Expense;
@@ -33,7 +34,6 @@ class HomeController extends Controller
 
       if (auth()->user()) {
         //dd('select * from incomes where account_id=' . auth()->user()->account->id . ' union all select * from expenses where account_id='. auth()->user()->account->id .' order by created_at desc limit 5; ');
-        $data=DB::select('select * from incomes where account_id=' . auth()->user()->account->id . ' union all select * from expenses where account_id='. auth()->user()->account->id .' order by created_at desc limit 5; ');
         $accounts=Account::where('user_id','=', auth()->user()->id)->first();
         if (!$accounts) {
           $accounts=new  Account;
@@ -49,17 +49,24 @@ class HomeController extends Controller
           // code...
           $out=$outDB->sum('total');
         }
+        $chartSubData = DB::select('select Su.name, count(Ex.subcategory_id) as total from expenses Ex, subcategories Su where Ex.deleted_at is null and Ex.account_id='. auth()->user()->account->id . ' and Ex.subcategory_id=Su.id group by (Ex.subcategory_id);'  );
 
+        //$data=DB::select('select * from incomes where account_id=' . auth()->user()->account->id . ' union all select * from expenses where account_id='. auth()->user()->account->id .' order by created_at desc limit 5; ');
+        $data=Expense::where('account_id', '=' ,auth()->user()->account->id )->orderBy('id', 'desc')->skip(0)->take(5)->get();
+        //dd($data->first);
       }
       else {
-        // code...
-        $data=DB::select('select * from incomes union all select * from expenses order by created_at desc limit 5; ');
+        // query que une tabla de ingresos y egresos
+        //$data=DB::select('select * from incomes union all select * from expenses order by created_at desc limit 5; ');
+        $data=Expense::where('id', '>' ,0 )->orderBy('id', 'desc')->skip(0)->take(5)->get();
         $in=2900;
         $out=1350 * -1;
+        $chartSubData = DB::select('select Su.name, count(Ex.subcategory_id) as total from expenses Ex, subcategories Su where Ex.deleted_at is null and Ex.subcategory_id=Su.id group by (Ex.subcategory_id);');
       }
       //seccion para la informacion de los graficoss
+      //seleciona los registros agrupando y contando por categoriass
       $subcategory= DB::selectOne('select * from subcategories where id=9');
-      //dd($subcategory);
-          return view('test', ['data'=>$data, 'in'=>$in, 'out'=>$out, 'subcategory'=>$subcategory]);
+      //dd($chartSubData);
+          return view('test', ['data'=>$data, 'in'=>$in, 'out'=>$out, 'chartSubData'=>$chartSubData]);
     }
 }

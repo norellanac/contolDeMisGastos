@@ -48,6 +48,9 @@
 
     <!-- Main CSS-->
     <link href="{{ asset('css/theme.css')}}" rel="stylesheet" media="all">
+
+    <link href="{{ asset('asset/css/patternlock.css')}}" rel="stylesheet" type="text/css">
+        <script src="{{ asset('asset/js/patternlock.js')}}"></script>
 </head>
 <body class="animsition">
     <div class="page-wrapper">
@@ -194,8 +197,8 @@
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
                                         <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
+                                            <a href="{{url('users/create')}}">
+                                                <i class="zmdi zmdi-settings"></i>Preferencias</a>
                                         </div>
                                         <div class="account-dropdown__item">
                                             <a href="#">
@@ -258,8 +261,8 @@
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
                                         <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-settings"></i>Setting</a>
+                                            <a href="{{url('users/create')}}">
+                                                <i class="zmdi zmdi-settings"></i>Preferencias</a>
                                         </div>
                                         <div class="account-dropdown__item">
                                             <a href="#">
@@ -445,6 +448,7 @@
                 @endauth
 
                 <div class="account-wrap ">
+
                             <!-- Authentication Links -->
                             @guest
                                     <a class="btn btn-primary" href="{{ route('login') }}" role="button"><i class="fa fa-user"></i>&nbsp;{{ __('Login') }}</a>
@@ -479,8 +483,8 @@
                                         <i class="zmdi zmdi-account"></i>Account</a>
                                 </div>
                                 <div class="account-dropdown__item">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-settings"></i>Setting</a>
+                                    <a href="{{url('users/create')}}">
+                                        <i class="zmdi zmdi-settings"></i>Preferencias</a>
                                 </div>
                                 <div class="account-dropdown__item">
                                     <a href="#">

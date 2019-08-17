@@ -4,10 +4,10 @@ $iColors=1;
 @endphp
 @extends('layouts.dashboardUser')
 @section('content')
-@section('welcome','Subcategorias')
+@section('welcome','Tipo de gasto')
 <div class="row d-none d-sm-block">
   @if (session('message'))
-  <div class="sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
+  <div class="mx-auto sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
     <span class="badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
     {{ session('message') }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -48,11 +48,8 @@ $iColors=1;
 </div>
 {{-- categories mobile --}}
 <div class="card d-block d-sm-none">
-    <div class="card-header">
-        <strong>Block Level Buttons </strong>
-        <small>Use this class
-            <code>.btn-block</code>
-        </small>
+    <div class="card-header mx-auto">
+        <strong>Tipo de gasto </strong>
     </div>
     <div class="card-body">
         @foreach ($subcategories as $category)
@@ -87,12 +84,12 @@ $iColors=1;
                             <form method="POST" action="{{ url('record/expense')}}">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="cc-payment" class="control-label mb-1">Total egreso</label>
+                                    <label for="cc-payment" class="control-label mb-1">Total Q.</label>
                                     <input id="origen" name="total" type="number" class="form-control" aria-required="true" aria-invalid="false" >
                                 </div>
-                                <div class="form-group has-success">
+                                <div class="form-group has-success d-none">
                                     <label for="cc-name" class="control-label mb-1">Cantidad</label>
-                                    <input id="destino" name="quantity" type="number" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
+                                    <input id="destino@" name="quantity" type="hi" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
                                         autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
                                     <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
                                 </div>
@@ -109,8 +106,7 @@ $iColors=1;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Confirm</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>

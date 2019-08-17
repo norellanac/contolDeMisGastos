@@ -4,12 +4,12 @@ $iColors=1;
 @endphp
 @extends('layouts.dashboardUser')
 @section('content')
-@section('welcome','Subcategorias')
+@section('welcome','Tipo de Ingreso')
 <div class="row d-none d-sm-block">
   @if (session('message'))
-  <div class="sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
+  <div class="mx-auto text-center sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
     <span class="badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
-    {{ session('message') }}
+    {{ session('message') }} <a href="{{'/'}}" class="btn btn-link"> <i class="fa fa-home"></i> Ir a inicio</a>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -48,11 +48,17 @@ $iColors=1;
 </div>
 {{-- categories mobile --}}
 <div class="card d-block d-sm-none">
-  <div class="card-header">
-    <strong>Block Level Buttons </strong>
-    <small>Use this class
-      <code>.btn-block</code>
-    </small>
+  @if (session('message'))
+  <div class="mx-auto sufee-alert alert with-close alert-{{ session('alert') }} alert-dismissible fade show">
+    <span class="mx-auto badge badge-pill badge-{{ session('alert') }}">{{ session('alert') }}</span>
+    {{ session('message') }} <a href="{{'/'}}" class="btn btn-link"> <i class="fa fa-home"></i> Ir a inicio</a>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  @endif
+  <div class="card-header mx-auto">
+    <strong>Tipo de Ingreso </strong>
   </div>
   <div class="card-body">
     @foreach ($subcategories as $category)
@@ -75,7 +81,7 @@ $iColors=1;
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticModalLabel">Añadir Registro </h5>
+        <h5 class="modal-title" id="staticModalLabel">Añadir Ingreso </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -87,10 +93,10 @@ $iColors=1;
             <form method="POST" action="{{ url('record/income')}}">
               @csrf
               <div class="form-group">
-                <label for="cc-payment" class="control-label mb-1">Total egreso</label>
+                <label for="cc-payment" class="control-label mb-1">Total Q.</label>
                 <input id="origen" name="total" type="number" class="form-control" aria-required="true" aria-invalid="false" >
               </div>
-              <div class="form-group has-success">
+              <div class="form-group has-success d-none">
                 <label for="cc-name" class="control-label mb-1">Cantidad</label>
                 <input id="destino" name="quantity" type="number" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
                 autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
@@ -109,8 +115,7 @@ $iColors=1;
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Confirm</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>

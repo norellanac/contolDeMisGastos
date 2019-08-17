@@ -35,10 +35,26 @@ class RecordsController extends Controller
       $expense->account_id=$request->user()->account->id;
       $expense->quantity=$request->quantity;
       if ($expense->save()) {
-        return redirect ('/cat/')->with(['message'=>'Se agregagó el registro correctamente', 'alert'=>'warning']);
+        return redirect ('/record/info/'. $request->subcategory_id)->with(['message'=>'Se agregagó el registro correctamente', 'alert'=>'warning', 'expense'=>$expense]);
       }
       else {
         return redirect ('/cat/')->with(['message'=>'Ocurrió un error al guardar el registro', 'alert'=>'danger']);
       }
+    }
+
+    public function destroy(Request $request )
+    {
+        //
+        $expense= Expense::find($request->id);
+        if ($expense) {
+          if ($expense->delete()) {
+            return redirect ('/'. $request->subcategory_id)->with(['message'=>'Se eliminó un registro', 'alert'=>'danger']);
+          }
+          else {
+            return redirect ('/')->with(['message'=>'Ocurrió un error al eliminar el registro', 'alert'=>'danger']);
+          }
+        }else {
+          return redirect ('/')->with(['message'=>'Algo salió mal, recargue la página por favor', 'alert'=>'danger']);
+        }
     }
 }

@@ -39,11 +39,13 @@ Route::get('/ip', function () {
     //return Request();
 });
 
-Route::get('states/{country}', 'UserController@states');
-Route::get('cities/{state}', 'UserController@cities');
-Route::get('cat/', 'CategoryController@category');
-Route::get('cat/incomes', 'CategoryController@incomes');
-Route::get('sub/{id}', 'CategoryController@subcategory');
-Route::post('record/', 'CategoryController@record');
-Route::post('record/income', 'RecordsController@incomes');
-Route::post('record/expense', 'RecordsController@expenses');
+Route::get('states/{country}', 'UserController@states')->middleware('auth');
+Route::get('cities/{state}', 'UserController@cities')->middleware('auth');
+Route::get('cat/', 'CategoryController@category')->middleware('auth');
+Route::get('cat/incomes', 'CategoryController@incomes')->middleware('auth');
+Route::get('sub/{id}', 'CategoryController@subcategory')->middleware('auth');
+Route::post('record/', 'CategoryController@record')->middleware('auth');
+Route::post('record/income', 'RecordsController@incomes')->middleware('auth');
+Route::post('record/expense', 'RecordsController@expenses')->middleware('auth');
+Route::delete('record/expense/', 'RecordsController@destroy')->middleware('auth');
+Route::resource('record/info', 'Prduct_recordController')->middleware('auth');

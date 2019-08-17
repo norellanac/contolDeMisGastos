@@ -71,16 +71,15 @@ class UserController extends Controller
       $user->country_id=$request->country_id;
       $user->state_id=$request->state_id;
       $user->city_id=$request->city_id;
-      if ($request->zone) {
-          $user->zone=$request->zone;
-      }
       if ($request->street) {
           $user->street=$request->street;
       }
       if ($request->avenue) {
           $user->avenue=$request->avenue;
       }
-
+      if ($request->zone) {
+          $user->zone=$request->zone;
+      }
       //******carga de imagen**********//
       if($request->hasFile('url_image')) {
           // Get filename with extension

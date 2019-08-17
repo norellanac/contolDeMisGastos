@@ -30,6 +30,7 @@ class CreateExpensesIncomesTables extends Migration
       $table->string('description')->nullable();
       $table->integer('quantity')->nullable();
       $table->integer('total');
+      $table->softDeletes();
 
       $table->unsignedBigInteger('subcategory_id');
       $table->foreign('subcategory_id')
@@ -46,7 +47,8 @@ class CreateExpensesIncomesTables extends Migration
       $table->string('description')->nullable();
       $table->integer('quantity')->nullable();
       $table->integer('total');
-      
+      $table->softDeletes();
+
       $table->unsignedBigInteger('subcategory_id');
       $table->foreign('subcategory_id')
       ->references('id')->on('subcategories');
@@ -65,6 +67,9 @@ class CreateExpensesIncomesTables extends Migration
   */
   public function down()
   {
+    Schema::table("expenses", function ($table) {
+        $table->dropSoftDeletes();
+    });
     Schema::dropIfExists('expenses');
     Schema::dropIfExists('incomes');
     Schema::dropIfExists('accounts');
