@@ -18,7 +18,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', '¿Qué Compraste?') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('/js/app.js') }}" defer></script>
@@ -54,7 +54,7 @@
 </head>
 <body class="animsition">
     <div class="page-wrapper">
-        <!-- HEADER DESKTOP-->
+      <!-- HEADER DESKTOP-->
         <header class="header-desktop3 d-none d-lg-block">
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
@@ -64,89 +64,6 @@
                         </a>
                     </div>
                     <div class="header__navbar">
-                        <ul class="list-unstyled">
-                            <li class="has-sub">
-                                <a href="#">
-                                    <i class="fas fa-tachometer-alt"></i>Dashboard
-                                    <span class="bot-line"></span>
-                                </a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="index.html">Dashboard 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="index2.html">Dashboard 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="index3.html">Dashboard 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="index4.html">Dashboard 4</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="table.html">
-                                    <i class="fas fa-trophy"></i>
-                                    <span class="bot-line"></span>Features</a>
-                            </li>
-                            <li class="has-sub">
-                                <a href="#">
-                                    <i class="fas fa-copy"></i>
-                                    <span class="bot-line"></span>Pages</a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="login.html">Login</a>
-                                    </li>
-                                    <li>
-                                        <a href="register.html">Register</a>
-                                    </li>
-                                    <li>
-                                        <a href="forget-pass.html">Forget Password</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="#">
-                                    <i class="fas fa-desktop"></i>
-                                    <span class="bot-line"></span>UI Elements</a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="button.html">Button</a>
-                                    </li>
-                                    <li>
-                                        <a href="badge.html">Badges</a>
-                                    </li>
-                                    <li>
-                                        <a href="tab.html">Tabs</a>
-                                    </li>
-                                    <li>
-                                        <a href="card.html">Cards</a>
-                                    </li>
-                                    <li>
-                                        <a href="alert.html">Alerts</a>
-                                    </li>
-                                    <li>
-                                        <a href="progress-bar.html">Progress Bars</a>
-                                    </li>
-                                    <li>
-                                        <a href="modal.html">Modals</a>
-                                    </li>
-                                    <li>
-                                        <a href="switch.html">Switchs</a>
-                                    </li>
-                                    <li>
-                                        <a href="grid.html">Grids</a>
-                                    </li>
-                                    <li>
-                                        <a href="fontawesome.html">FontAwesome</a>
-                                    </li>
-                                    <li>
-                                        <a href="typo.html">Typography</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
                     </div>
                     <div class="header__tool">
                         @auth
@@ -255,7 +172,7 @@
                                             <span class="email">{{ Auth::user()->email }}</span>
                                         </div>
                                     </div>
-                                    <div class="account-dropdown__body">
+                                    <div class="account-dropdown__body d-none">
                                         <div class="account-dropdown__item">
                                             <a href="#">
                                                 <i class="zmdi zmdi-account"></i>Account</a>
@@ -274,7 +191,7 @@
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                     <i class="zmdi zmdi-power"></i>
-                                        {{ __('Logout') }}</a>
+                                        {{ __('Salir') }}</a>
                                     </div>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -291,20 +208,28 @@
 
         <!-- HEADER MOBILE-->
         <header class="header-mobile header-mobile-2 d-block d-lg-none">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="{{ asset('images/icon/logo-white.png') }}" alt="CoolAdmin" />
-                        </a>
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+          <!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{url('/')}}">
+    <img src="{{ asset('images/icon/logo-white.png') }}" alt="CoolAdmin" class="d-inline-block align-top" />
+  </a>
+</nav>
+            {{--
+              <div class="header-mobile__bar">
+                  <div class="container-fluid">
+                      <div class="header-mobile-inner">
+                          <a class="logo" href="index.html">
+                              <img src="{{ asset('images/icon/logo-white.png') }}" alt="CoolAdmin" />
+                          </a>
+                          <button class="hamburger hamburger--slider" type="button">
+                              <span class="hamburger-box">
+                                  <span class="hamburger-inner"></span>
+                              </span>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+              --}}
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
@@ -477,7 +402,7 @@
                                     <span class="email">{{ Auth::user()->email }}</span>
                                 </div>
                             </div>
-                            <div class="account-dropdown__body">
+                            <div class="account-dropdown__body d-none">
                                 <div class="account-dropdown__item">
                                     <a href="#">
                                         <i class="zmdi zmdi-account"></i>Account</a>
@@ -496,7 +421,7 @@
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                             <i class="zmdi zmdi-power"></i>
-                                {{ __('Logout') }}</a>
+                                {{ __('Salir') }}</a>
                             </div>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

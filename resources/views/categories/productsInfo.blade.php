@@ -26,6 +26,7 @@ height: auto;
 @endif
 <div class="row">
   @if($products)
+  <h3 class="mx-auto text-center">¿Deseas detallar tus consumos?</h3>
     <!-- STATISTIC-->
     <div class="col-12 col-xs-12 col-sm-12 col-offset-md-4 col-md-6 mx-auto d-block mt-3 ">
       <div id="carouselExampleControls1" class="carousel slide " data-ride="carousel">

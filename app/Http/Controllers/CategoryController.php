@@ -69,6 +69,7 @@ INSERT INTO subcategories (name, description, icon_image, category_id, created_a
 INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Mantenimiento de vehículo', 'Descripcion', 'fas fa-utensils', 3, now(), now());
 INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Combustible', 'Descripcion', 'fas fa-utensils', 3, now(), now());
 INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Estacionamiento', 'Descripcion', 'fas fa-utensils', 3, now(), now());
+INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Tranporte Publico', 'Descripcion', 'fas fa-utensils', 3, now(), now());
 INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Seguro de vehículos', 'Descripcion', 'fas fa-utensils', 3, now(), now());
 INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Alquiler de vehículos', 'Descripcion', 'fas fa-utensils', 3, now(), now());
 INSERT INTO subcategories (name, description, icon_image, category_id, created_at, updated_at) VALUES ('Eventos Deportivos', 'Descripcion', 'fas fa-utensils', 4, now(), now());
