@@ -29,9 +29,7 @@ Bienvenido
       <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
         <div class="bg-overlay bg-overlay--blue" ></div>
         <h3>
-          @if($in )
-          <i class="zmdi zmdi-account-calendar"></i>Ingresos: {{$in}}</h3>
-          @endif
+          <i class="zmdi zmdi-account-calendar"></i>Ingresos:@if($in ) {{$in}} @endif</h3>
           <a class="au-btn-plus bg-primary" href="{{url('cat/incomes')}}">
             <i class="zmdi zmdi-plus"></i>
           </a>
@@ -47,9 +45,9 @@ Bienvenido
         <div class="au-card-title" style="background-image:url('images/bg-title-02.jpg');">
           <div class="bg-overlay bg-overlay-- " style="background-color:rgba(233, 127, 0, 0.9);"></div>
           <h3>
-            @if($out )
-            <i class="zmdi zmdi-account-calendar"></i>Gastos: {{$out}} </h3>
-            @endif
+
+            <i class="zmdi zmdi-account-calendar"></i>Gastos: @if($out ){{$out}} @endif</h3>
+
             <a class="au-btn-plus bg-danger" href="{{url('cat')}}">
               <i class="zmdi zmdi-plus"></i>
             </a>
@@ -67,9 +65,7 @@ Bienvenido
         <div class="row">
           <div class="col-md-6 col-lg-3">
             <div class="statistic__item statistic__item--green">
-              @if($in )
-              <h2 class="number">{{$in- $out}}</h2>
-              @endif
+              <h2 class="number">@if($in ){{$in- $out}}@endif</h2>
               <span class="desc">members online</span>
               <div class="icon">
                 <i class="zmdi zmdi-account-o"></i>

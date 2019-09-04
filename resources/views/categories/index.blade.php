@@ -40,20 +40,6 @@ $iColors=1;
                     }
                     @endphp
                 @endforeach
-
-                <div class="col-sm-6 col-md-6 col-lg-3">
-                    <div class="card statistic__item">
-                        <a href="{{url('sub')}}">
-                            <div class="mx-auto d-block">
-                                <h2 class="number"><i class="zmdi zmdi-calendar-note"></i></h2>
-                                <span class="desc">Nombrre</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-calendar-note"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>>
         <!-- END STATISTIC-->

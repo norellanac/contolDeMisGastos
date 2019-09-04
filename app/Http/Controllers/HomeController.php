@@ -49,7 +49,7 @@ class HomeController extends Controller
           // code...
           $out=$outDB->sum('total');
         }
-        $chartSubData = DB::select('select Su.name, count(Ex.subcategory_id) as total from expenses Ex, subcategories Su where Ex.deleted_at is null and Ex.account_id='. auth()->user()->account->id . ' and Ex.subcategory_id=Su.id group by (Ex.subcategory_id);'  );
+        $chartSubData = DB::select('select Su.name, count(Ex.subcategory_id) as total from expenses Ex, subcategories Su where Ex.deleted_at is null and Ex.subcategory_id=Su.id and Ex.account_id='. auth()->user()->account->id . '  group by (Ex.subcategory_id);'  );
 
         //$data=DB::select('select * from incomes where account_id=' . auth()->user()->account->id . ' union all select * from expenses where account_id='. auth()->user()->account->id .' order by created_at desc limit 5; ');
         $data=Expense::where('account_id', '=' ,auth()->user()->account->id )->orderBy('id', 'desc')->skip(0)->take(5)->get();

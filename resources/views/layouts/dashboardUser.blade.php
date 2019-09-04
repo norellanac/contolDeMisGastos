@@ -18,7 +18,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', '¿Qué Compraste?') }}</title>
+    <title>QuéCompraste.website| El sitio web donde podrás llevar el control de tus finanzas personales.</title>
 
     <!-- Scripts -->
     <script src="{{ asset('/js/app.js') }}" defer></script>
@@ -60,14 +60,15 @@
                 <div class="header3-wrap">
                     <div class="header__logo">
                         <a href="{{url('/')}}">
-                            <img src="{{ asset('images/icon/logo-white.png') }}" alt="CoolAdmin" />
+                          QuéCompraste
+                            {{--<img src="{{ asset('images/icon/logo-white.png') }}" alt="CoolAdmin" /> --}}
                         </a>
                     </div>
                     <div class="header__navbar">
                     </div>
                     <div class="header__tool">
                         @auth
-                            <div class="header-button-item has-noti js-item-menu">
+                            <div class="header-button-item has-noti js-item-menu invisible">
                                 <i class="zmdi zmdi-notifications"></i>
                                 <div class="notifi-dropdown notifi-dropdown--no-bor js-dropdown">
                                     <div class="notifi__title">
@@ -146,9 +147,9 @@
                         <div class="account-wrap ">
                                     <!-- Authentication Links -->
                                     @guest
-                                            <a class="btn btn-primary" href="{{ route('login') }}" role="button"><i class="fa fa-user"></i>&nbsp;{{ __('Login') }}</a>
+                                            <a class="btn btn-primary" href="{{ route('login') }}" role="button"><i class="fa fa-user"></i>&nbsp;{{ __('Ingresar') }}</a>
                                         @if (Route::has('register'))
-                                                <a class="btn btn-success" href="{{ route('register') }}"><i class="fa fa-users"></i>&nbsp;{{ __('Register') }}</a>
+                                                <a class="btn btn-success" href="{{ route('register') }}"><i class="fa fa-users"></i>&nbsp;{{ __('Crear cuenta') }}</a>
                                         @endif
                                     @else
                             <div class="account-item account-item--style2 clearfix js-item-menu">
@@ -211,7 +212,8 @@
           <!-- Image and text -->
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="{{url('/')}}">
-    <img src="{{ asset('images/icon/logo-white.png') }}" alt="CoolAdmin" class="d-inline-block align-top" />
+    QuéCompraste
+    {{--<img src="{{ asset('images/icon/logo-white.png') }}" alt="CoolAdmin" class="d-inline-block align-top" />--}}
   </a>
 </nav>
             {{--
@@ -332,7 +334,7 @@
         <div class="sub-header-mobile-2 d-block d-lg-none">
             <div class="header__tool">
                 @auth
-                    <div class="header-button-item has-noti js-item-menu">
+                    <div class="header-button-item has-noti js-item-menu invisible">
                         <i class="zmdi zmdi-notifications"></i>
                         <div class="notifi-dropdown notifi-dropdown--no-bor js-dropdown">
                             <div class="notifi__title">
@@ -457,7 +459,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                <p>Derechos reservados © 2019 <a href="http://quecompraste.website/">QuéCompraste.website</a>.  Template by <a href="https://colorlib.com">Colorlib</a>.</p>
                             </div>
                         </div>
                     </div>

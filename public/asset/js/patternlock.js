@@ -16,7 +16,7 @@ History
 */
 
 var patternLock = (function () {
-	
+
     // Parameters-------------------
 
     var autoInit = true;
@@ -195,7 +195,7 @@ var patternLock = (function () {
             var reset = document.createElement("div");
             reset.className = "patternreset";
             reset.style.display = "none";
-            reset.innerHTML = "(reset)";
+            reset.innerHTML = "<button class='btn btn-danger btn-block'>Volver a dibujar patron </button>";
             reset.onclick = function(){
                 clear();
             };
@@ -341,4 +341,3 @@ var patternLock = (function () {
 
 
 }());
-

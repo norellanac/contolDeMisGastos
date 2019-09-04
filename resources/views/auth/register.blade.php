@@ -32,7 +32,7 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label>Contraseña</label>
+                    <label>Contraseña (trazo de al menos 3 puntos )</label>
                     <input id="password" type="password" class="patternlock" class="au-input au-input--full{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                     @if ($errors->has('password'))
@@ -47,7 +47,7 @@
                 </div>
                 <div class="login-checkbox">
                     <label>
-                        <input type="checkbox" name="aggree">Acepto los términos y condiciones
+                        <input type="checkbox" name="aggree" required>Acepto los términos y condiciones
                     </label>
                 </div>
                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Regístrate</button>

@@ -26,9 +26,10 @@ height: auto;
 @endif
 <div class="row">
   @if($products)
-  <h3 class="mx-auto text-center">¿Deseas detallar tus consumos?</h3>
+
     <!-- STATISTIC-->
     <div class="col-12 col-xs-12 col-sm-12 col-offset-md-4 col-md-6 mx-auto d-block mt-3 ">
+      <h3 class="mx-auto text-center">¿Deseas detallar tus consumos? <a href="{{'/'}}" class="btn btn-link"> <i class="fa fa-home"></i> Ir a inicio</a></h3> 
       <div id="carouselExampleControls1" class="carousel slide " data-ride="carousel">
         <div class="carousel-inner">
           @foreach ($products as $product)
