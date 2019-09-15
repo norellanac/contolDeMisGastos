@@ -49,3 +49,7 @@ Route::post('record/income', 'RecordsController@incomes')->middleware('auth');
 Route::post('record/expense', 'RecordsController@expenses')->middleware('auth');
 Route::delete('record/expense/', 'RecordsController@destroy')->middleware('auth');
 Route::resource('record/info', 'Prduct_recordController')->middleware('auth');
+
+//reportesUusuarios
+Route::get('data', 'UserReportsController@index')->middleware('auth');
+Route::post('data', 'UserReportsController@report')->middleware('auth');

@@ -103,12 +103,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="login-checkbox">
-                    <label>
-                        <input type="checkbox" name="aggree">Acepto los términos y condiciones
-                    </label>
-                </div>
-                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Regístrate</button>
+                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Continuar</button>
                 {{--<div class="social-login-content">
                     <div class="social-button">
                         <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>
@@ -116,11 +111,6 @@
                     </div>
                 </div>--}}
             </form>
-            <div class="register-link">
-                <p>
-                    <a href="{{url('login')}}">Iniciar sesión</a>
-                </p>
-            </div>
         </div>
     </div>
 </div>

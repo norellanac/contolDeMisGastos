@@ -177,6 +177,9 @@ Bienvenido
                   @endif
                 </table>
               </div>
+              @auth
+                <a class="btn btn-block btn-info" href="{{url('/data')}}">Ver detalles</a>
+              @endauth
             </div>
             <!-- END TOP CAMPAIGN-->
           </div>

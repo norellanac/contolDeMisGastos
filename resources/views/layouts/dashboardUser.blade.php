@@ -278,7 +278,7 @@
                                 <i class="fas fa-copy"></i>Pages</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="login.html">Login</a>
+                                    <a href="login.htm">Login</a>
                                 </li>
                                 <li>
                                     <a href="register.html">Register</a>
@@ -378,9 +378,9 @@
 
                             <!-- Authentication Links -->
                             @guest
-                                    <a class="btn btn-primary" href="{{ route('login') }}" role="button"><i class="fa fa-user"></i>&nbsp;{{ __('Login') }}</a>
+                                    <a class="btn btn-primary" href="{{ route('login') }}" role="button"><i class="fa fa-user"></i>&nbsp;{{ __('Ingresar') }}</a>
                                 @if (Route::has('register'))
-                                        <a class="btn btn-success" href="{{ route('register') }}"><i class="fa fa-users"></i>&nbsp;{{ __('Register') }}</a>
+                                        <a class="btn btn-success" href="{{ route('register') }}"><i class="fa fa-users"></i>&nbsp;{{ __('Crear cuenta') }}</a>
                                 @endif
                             @else
                     <div class="account-item account-item--style2 clearfix js-item-menu">
