@@ -215,21 +215,21 @@ Bienvenido
           type: 'bar',
           data: {
             labels: [
-              @foreach ($chartSubData as $dataGrafico)
+              @foreach ($totalsCharts as $dataGrafico)
               '{{ $dataGrafico->name }}',
               @endforeach
             ],
             datasets: [
               {
                 label: "Registros",
-                data: [@foreach ($chartSubData as $dataGrafico)
-                  {{ $dataGrafico->total  }},
+                data: [@foreach ($totalsCharts as $dataGrafico)
+                  {{ $dataGrafico->total * -1 }},
                   @endforeach
                 ],
                 borderColor: "transparent",
                 borderWidth: "0",
                 backgroundColor: [
-                  @foreach ($chartSubData as $dataGrafico)
+                  @foreach ($totalsCharts as $dataGrafico)
                   perc2color({{ $dataGrafico->total * 100 / (sizeOf($chartSubData) +1) }} ),
                   @endforeach
 
