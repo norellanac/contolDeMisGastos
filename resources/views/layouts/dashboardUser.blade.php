@@ -60,8 +60,7 @@
                 <div class="header3-wrap">
                     <div class="header__logo">
                         <a href="{{url('/')}}">
-                          QuéCompraste
-                            {{--<img src="{{ asset('images/icon/logo-white.png') }}" alt="CoolAdmin" /> --}}
+                            <img src="{{ asset('images/icon/logo.png') }}" alt="CoolAdmin"  width="50%" />
                         </a>
                     </div>
                     <div class="header__navbar">
@@ -211,9 +210,7 @@
         <header class="header-mobile header-mobile-2 d-block d-lg-none">
           <!-- Image and text -->
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="{{url('/')}}">
-    QuéCompraste
-    {{--<img src="{{ asset('images/icon/logo-white.png') }}" alt="CoolAdmin" class="d-inline-block align-top" />--}}
+  <a class="navbar-brand" href="{{url('/')}}"><img src="{{ asset('images/icon/logo.png') }}" alt="CoolAdmin" class="d-inline-block align-top" width=50% />
   </a>
 </nav>
             {{--
@@ -459,7 +456,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Derechos reservados © 2019 <a href="http://quecompraste.website/">QuéCompraste.website</a>.  Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                <p>Derechos reservados © 2019  <a href="http://quecompraste.website/">QuéCompraste.website</a>. By Nery Orellana <br> Template by  <a href="https://colorlib.com">Colorlib</a>.</p>
                             </div>
                         </div>
                     </div>
